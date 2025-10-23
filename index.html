@@ -79,7 +79,6 @@
         .back-btn.active { display: block; }
         .back-btn:disabled { opacity: 0.5; cursor: not-allowed; }
         
-        /* 🔥 SEÇÃO DE VERIFICAÇÃO */
         .verification-section {
             padding: 80px 30px; text-align: center; min-height: 450px;
             display: none; flex-direction: column; justify-content: center; background: linear-gradient(135deg, #FFF3E0, #FFCC80);
@@ -113,8 +112,6 @@
         .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
         .testimonial { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; font-style: italic; font-size: 16px; }
         .guarantee { font-size: 26px; font-weight: bold; margin: 30px 0; color: #FFD700; }
-        .vibration { animation: vibrate 0.2s ease; }
-        @keyframes vibrate { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-2px); } 75% { transform: translateX(2px); } }
         .score-box { background: #4CAF50; color: white; padding: 15px; border-radius: 10px; margin: 20px 0; font-size: 20px; }
         .video-container { margin: 20px 0; text-align: center; }
         .video-container .converteai-wrapper { width: 100%; max-width: 400px; margin: 0 auto; }
@@ -149,324 +146,301 @@
     </style>
 </head>
 <body>
-    <div class="whatsapp-float" onclick="buyNow()" aria-label="Comprar agora via WhatsApp">💰</div>
+    <div class="whatsapp-float" onclick="buyNow()">💰</div>
 
     <div class="quiz-container">
-        <header class="progress-section" role="banner">
+        <header class="progress-section">
             <div class="progress-title" id="progressTitle">Pergunta 1 de 20 • Você está voando!</div>
-            <div class="progress-bar"><div class="progress-fill" id="progressFill" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div></div>
-            <div class="live-buyers" id="liveBuyers" aria-live="polite">Carolina acabou de comprar!</div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+            <div class="live-buyers" id="liveBuyers">Carolina acabou de comprar!</div>
         </header>
 
         <main>
-            <!-- 🔥 TODAS AS 20 PERGUNTAS COM IDs CORRETOS -->
-            <section id="q1" class="question-section active" aria-labelledby="q1-title">
-                <h2 id="q1-title" class="question-title">Qual sua maior dificuldade para emagrecer?</h2>
+            <section id="q1" class="question-section active">
+                <h2 class="question-title">Qual sua maior dificuldade para emagrecer?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="1a" aria-describedby="stat1a">Fome constante <span id="stat1a" class="stat">93%</span></button>
-                    <button class="option-btn" data-answer="1b" aria-describedby="stat1b">Metabolismo lento <span id="stat1b" class="stat">82%</span></button>
+                    <button class="option-btn" data-answer="1a">Fome constante <span class="stat">93%</span></button>
+                    <button class="option-btn" data-answer="1b">Metabolismo lento <span class="stat">82%</span></button>
                 </div>
-                <button class="back-btn" id="back1" disabled aria-label="Voltar para pergunta anterior">← Voltar</button>
+                <button class="back-btn" id="back1" disabled>← Voltar</button>
             </section>
 
-            <section id="q2" class="question-section" aria-labelledby="q2-title">
-                <h2 id="q2-title" class="question-title">Você faz dieta com frequência?</h2>
+            <section id="q2" class="question-section">
+                <h2 class="question-title">Você faz dieta com frequência?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="2a" aria-describedby="stat2a">Toda semana <span id="stat2a" class="stat">87%</span></button>
-                    <button class="option-btn" data-answer="2b" aria-describedby="stat2b">Desisto rápido <span id="stat2b" class="stat">91%</span></button>
+                    <button class="option-btn" data-answer="2a">Toda semana <span class="stat">87%</span></button>
+                    <button class="option-btn" data-answer="2b">Desisto rápido <span class="stat">91%</span></button>
                 </div>
-                <button class="back-btn" id="back2" aria-label="Voltar para pergunta anterior">← Voltar</button>
+                <button class="back-btn" id="back2">← Voltar</button>
             </section>
 
-            <section id="q3" class="question-section" aria-labelledby="q3-title">
-                <h2 id="q3-title" class="question-title">Onde você acumula mais gordura?</h2>
+            <section id="q3" class="question-section">
+                <h2 class="question-title">Onde você acumula mais gordura?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="3a" aria-describedby="stat3a">Barriga <span id="stat3a" class="stat">95%</span></button>
-                    <button class="option-btn" data-answer="3b" aria-describedby="stat3b">Coxas/braços <span id="stat3b" class="stat">78%</span></button>
+                    <button class="option-btn" data-answer="3a">Barriga <span class="stat">95%</span></button>
+                    <button class="option-btn" data-answer="3b">Coxas/braços <span class="stat">78%</span></button>
                 </div>
                 <button class="back-btn" id="back3">← Voltar</button>
             </section>
 
-            <section id="q4" class="question-section" aria-labelledby="q4-title">
-                <h2 id="q4-title" class="question-title">Qual sua idade?</h2>
+            <section id="q4" class="question-section">
+                <h2 class="question-title">Qual sua idade?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="4a" aria-describedby="stat4a">Menos de 35 <span id="stat4a" class="stat">84%</span></button>
-                    <button class="option-btn" data-answer="4b" aria-describedby="stat4b">35 ou mais <span id="stat4b" class="stat">89%</span></button>
+                    <button class="option-btn" data-answer="4a">Menos de 35 <span class="stat">84%</span></button>
+                    <button class="option-btn" data-answer="4b">35 ou mais <span class="stat">89%</span></button>
                 </div>
                 <button class="back-btn" id="back4">← Voltar</button>
             </section>
 
-            <section id="q5" class="question-section" aria-labelledby="q5-title">
-                <h2 id="q5-title" class="question-title">Tempo para academia?</h2>
+            <section id="q5" class="question-section">
+                <h2 class="question-title">Tempo para academia?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="5a" aria-describedby="stat5a">Quase nunca <span id="stat5a" class="stat">92%</span></button>
-                    <button class="option-btn" data-answer="5b" aria-describedby="stat5b">Prefiro em casa <span id="stat5b" class="stat">81%</span></button>
+                    <button class="option-btn" data-answer="5a">Quase nunca <span class="stat">92%</span></button>
+                    <button class="option-btn" data-answer="5b">Prefiro em casa <span class="stat">81%</span></button>
                 </div>
                 <button class="back-btn" id="back5">← Voltar</button>
             </section>
 
-            <section id="q6" class="question-section" aria-labelledby="q6-title">
-                <h2 id="q6-title" class="question-title">Quanto quer emagrecer?</h2>
+            <section id="q6" class="question-section">
+                <h2 class="question-title">Quanto quer emagrecer?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="6a" aria-describedby="stat6a">5-10kg <span id="stat6a" class="stat">88%</span></button>
-                    <button class="option-btn" data-answer="6b" aria-describedby="stat6b">+10kg <span id="stat6b" class="stat">76%</span></button>
+                    <button class="option-btn" data-answer="6a">5-10kg <span class="stat">88%</span></button>
+                    <button class="option-btn" data-answer="6b">+10kg <span class="stat">76%</span></button>
                 </div>
                 <button class="back-btn" id="back6">← Voltar</button>
             </section>
 
-            <section id="q7" class="question-section" aria-labelledby="q7-title">
-                <h2 id="q7-title" class="question-title">Já gastou com dietas?</h2>
+            <section id="q7" class="question-section">
+                <h2 class="question-title">Já gastou com dietas?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="7a" aria-describedby="stat7a">Muito dinheiro <span id="stat7a" class="stat">94%</span></button>
-                    <button class="option-btn" data-answer="7b" aria-describedby="stat7b">Cansado de perder <span id="stat7b" class="stat">90%</span></button>
+                    <button class="option-btn" data-answer="7a">Muito dinheiro <span class="stat">94%</span></button>
+                    <button class="option-btn" data-answer="7b">Cansado de perder <span class="stat">90%</span></button>
                 </div>
                 <button class="back-btn" id="back7">← Voltar</button>
             </section>
 
-            <section id="q8" class="question-section" aria-labelledby="q8-title">
-                <h2 id="q8-title" class="question-title">Bebe água suficiente?</h2>
+            <section id="q8" class="question-section">
+                <h2 class="question-title">Bebe água suficiente?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="8a" aria-describedby="stat8a">Sim, 2L+ <span id="stat8a" class="stat">67%</span></button>
-                    <button class="option-btn" data-answer="8b" aria-describedby="stat8b">Quase nunca <span id="stat8b" class="stat">96%</span></button>
+                    <button class="option-btn" data-answer="8a">Sim, 2L+ <span class="stat">67%</span></button>
+                    <button class="option-btn" data-answer="8b">Quase nunca <span class="stat">96%</span></button>
                 </div>
                 <button class="back-btn" id="back8">← Voltar</button>
             </section>
 
-            <section id="q9" class="question-section" aria-labelledby="q9-title">
-                <h2 id="q9-title" class="question-title">Dorme bem à noite?</h2>
+            <section id="q9" class="question-section">
+                <h2 class="question-title">Dorme bem à noite?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="9a" aria-describedby="stat9a">7-9 horas <span id="stat9a" class="stat">72%</span></button>
-                    <button class="option-btn" data-answer="9b" aria-describedby="stat9b">Menos de 6h <span id="stat9b" class="stat">85%</span></button>
+                    <button class="option-btn" data-answer="9a">7-9 horas <span class="stat">72%</span></button>
+                    <button class="option-btn" data-answer="9b">Menos de 6h <span class="stat">85%</span></button>
                 </div>
                 <button class="back-btn" id="back9">← Voltar</button>
             </section>
 
-            <section id="q10" class="question-section" aria-labelledby="q10-title">
-                <h2 id="q10-title" class="question-title">Nível de estresse?</h2>
+            <section id="q10" class="question-section">
+                <h2 class="question-title">Nível de estresse?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="10a" aria-describedby="stat10a">Baixo <span id="stat10a" class="stat">45%</span></button>
-                    <button class="option-btn" data-answer="10b" aria-describedby="stat10b">Alto <span id="stat10b" class="stat">98%</span></button>
+                    <button class="option-btn" data-answer="10a">Baixo <span class="stat">45%</span></button>
+                    <button class="option-btn" data-answer="10b">Alto <span class="stat">98%</span></button>
                 </div>
                 <button class="back-btn" id="back10">← Voltar</button>
             </section>
 
-            <section id="q11" class="question-section" aria-labelledby="q11-title">
-                <h2 id="q11-title" class="question-title">Come fast food?</h2>
+            <section id="q11" class="question-section">
+                <h2 class="question-title">Come fast food?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="11a" aria-describedby="stat11a">Semanalmente <span id="stat11a" class="stat">79%</span></button>
-                    <button class="option-btn" data-answer="11b" aria-describedby="stat11b">Todo dia <span id="stat11b" class="stat">83%</span></button>
+                    <button class="option-btn" data-answer="11a">Semanalmente <span class="stat">79%</span></button>
+                    <button class="option-btn" data-answer="11b">Todo dia <span class="stat">83%</span></button>
                 </div>
                 <button class="back-btn" id="back11">← Voltar</button>
             </section>
 
-            <section id="q12" class="question-section" aria-labelledby="q12-title">
-                <h2 id="q12-title" class="question-title">Tem problema de saúde?</h2>
+            <section id="q12" class="question-section">
+                <h2 class="question-title">Tem problema de saúde?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="12a" aria-describedby="stat12a">Diabetes <span id="stat12a" class="stat">88%</span></button>
-                    <button class="option-btn" data-answer="12b" aria-describedby="stat12b">Pressão alta <span id="stat12b" class="stat">91%</span></button>
+                    <button class="option-btn" data-answer="12a">Diabetes <span class="stat">88%</span></button>
+                    <button class="option-btn" data-answer="12b">Pressão alta <span class="stat">91%</span></button>
                 </div>
                 <button class="back-btn" id="back12">← Voltar</button>
             </section>
 
-            <section id="q13" class="question-section" aria-labelledby="q13-title">
-                <h2 id="q13-title" class="question-title">Cozinha em casa?</h2>
+            <section id="q13" class="question-section">
+                <h2 class="question-title">Cozinha em casa?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="13a" aria-describedby="stat13a">Todo dia <span id="stat13a" class="stat">65%</span></button>
-                    <button class="option-btn" data-answer="13b" aria-describedby="stat13b">Quase nunca <span id="stat13b" class="stat">92%</span></button>
+                    <button class="option-btn" data-answer="13a">Todo dia <span class="stat">65%</span></button>
+                    <button class="option-btn" data-answer="13b">Quase nunca <span class="stat">92%</span></button>
                 </div>
                 <button class="back-btn" id="back13">← Voltar</button>
             </section>
 
-            <section id="q14" class="question-section" aria-labelledby="q14-title">
-                <h2 id="q14-title" class="question-title">Quer resultado rápido?</h2>
+            <section id="q14" class="question-section">
+                <h2 class="question-title">Quer resultado rápido?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="14a" aria-describedby="stat14a">Em 15 dias <span id="stat14a" class="stat">97%</span></button>
-                    <button class="option-btn" data-answer="14b" aria-describedby="stat14b">Em 30 dias <span id="stat14b" class="stat">89%</span></button>
+                    <button class="option-btn" data-answer="14a">Em 15 dias <span class="stat">97%</span></button>
+                    <button class="option-btn" data-answer="14b">Em 30 dias <span class="stat">89%</span></button>
                 </div>
                 <button class="back-btn" id="back14">← Voltar</button>
             </section>
 
-            <section id="q15" class="question-section" aria-labelledby="q15-title">
-                <h2 id="q15-title" class="question-title">Pronto para mudar de vez?</h2>
+            <section id="q15" class="question-section">
+                <h2 class="question-title">Pronto para mudar de vez?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="15a" aria-describedby="stat15a">AGORA! <span id="stat15a" class="stat">99%</span></button>
-                    <button class="option-btn" data-answer="15b" aria-describedby="stat15b">HOJE! <span id="stat15b" class="stat">98%</span></button>
+                    <button class="option-btn" data-answer="15a">AGORA! <span class="stat">99%</span></button>
+                    <button class="option-btn" data-answer="15b">HOJE! <span class="stat">98%</span></button>
                 </div>
                 <button class="back-btn" id="back15">← Voltar</button>
             </section>
 
-            <section id="q16" class="question-section" aria-labelledby="q16-title">
-                <h2 id="q16-title" class="question-title">Qual dessas COMIDAS DE CONFORTO você mais ataca quando está estressada/o dia foi ruim?</h2>
+            <section id="q16" class="question-section">
+                <h2 class="question-title">Qual dessas COMIDAS DE CONFORTO você mais ataca quando está estressada/o dia foi ruim?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="16a" aria-describedby="stat16a">Doces (chocolate/bolo) <span id="stat16a" class="stat">87%</span></button>
-                    <button class="option-btn" data-answer="16b" aria-describedby="stat16b">Salgados (pão/queijo) <span id="stat16b" class="stat">82%</span></button>
-                    <button class="option-btn" data-answer="16c" aria-describedby="stat16c">Refrigerante/bebidas <span id="stat16c" class="stat">76%</span></button>
+                    <button class="option-btn" data-answer="16a">Doces (chocolate/bolo) <span class="stat">87%</span></button>
+                    <button class="option-btn" data-answer="16b">Salgados (pão/queijo) <span class="stat">82%</span></button>
+                    <button class="option-btn" data-answer="16c">Refrigerante/bebidas <span class="stat">76%</span></button>
                 </div>
                 <button class="back-btn" id="back16">← Voltar</button>
             </section>
 
-            <section id="q17" class="question-section" aria-labelledby="q17-title">
-                <h2 id="q17-title" class="question-title">Quantas vezes por semana você abre a geladeira À NOITE só pra beliscar qualquer coisa?</h2>
+            <section id="q17" class="question-section">
+                <h2 class="question-title">Quantas vezes por semana você abre a geladeira À NOITE só pra beliscar qualquer coisa?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="17a" aria-describedby="stat17a">5+ vezes <span id="stat17a" class="stat">91%</span></button>
-                    <button class="option-btn" data-answer="17b" aria-describedby="stat17b">3-4 vezes <span id="stat17b" class="stat">85%</span></button>
-                    <button class="option-btn" data-answer="17c" aria-describedby="stat17c">1-2 vezes <span id="stat17c" class="stat">72%</span></button>
+                    <button class="option-btn" data-answer="17a">5+ vezes <span class="stat">91%</span></button>
+                    <button class="option-btn" data-answer="17b">3-4 vezes <span class="stat">85%</span></button>
+                    <button class="option-btn" data-answer="17c">1-2 vezes <span class="stat">72%</span></button>
                 </div>
                 <button class="back-btn" id="back17">← Voltar</button>
             </section>
 
-            <section id="q18" class="question-section" aria-labelledby="q18-title">
-                <h2 id="q18-title" class="question-title">Quantas vezes você já comprou roupa nova pensando "agora vou emagrecer e usar"?</h2>
+            <section id="q18" class="question-section">
+                <h2 class="question-title">Quantas vezes você já comprou roupa nova pensando "agora vou emagrecer e usar"?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="18a" aria-describedby="stat18a">+5 vezes <span id="stat18a" class="stat">89%</span></button>
-                    <button class="option-btn" data-answer="18b" aria-describedby="stat18b">3-4 vezes <span id="stat18b" class="stat">83%</span></button>
-                    <button class="option-btn" data-answer="18c" aria-describedby="stat18c">1-2 vezes <span id="stat18c" class="stat">69%</span></button>
+                    <button class="option-btn" data-answer="18a">+5 vezes <span class="stat">89%</span></button>
+                    <button class="option-btn" data-answer="18b">3-4 vezes <span class="stat">83%</span></button>
+                    <button class="option-btn" data-answer="18c">1-2 vezes <span class="stat">69%</span></button>
                 </div>
                 <button class="back-btn" id="back18">← Voltar</button>
             </section>
 
-            <section id="q19" class="question-section" aria-labelledby="q19-title">
-                <h2 id="q19-title" class="question-title">Quando sobe na balança, qual é sua PRIMEIRA reação automática?</h2>
+            <section id="q19" class="question-section">
+                <h2 class="question-title">Quando sobe na balança, qual é sua PRIMEIRA reação automática?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="19a" aria-describedby="stat19a">Choro/raiva <span id="stat19a" class="stat">95%</span></button>
-                    <button class="option-btn" data-answer="19b" aria-describedby="stat19b">Desanimo total <span id="stat19b" class="stat">89%</span></button>
-                    <button class="option-btn" data-answer="19c" aria-describedby="stat19c">Tento ignorar <span id="stat19c" class="stat">77%</span></button>
+                    <button class="option-btn" data-answer="19a">Choro/raiva <span class="stat">95%</span></button>
+                    <button class="option-btn" data-answer="19b">Desanimo total <span class="stat">89%</span></button>
+                    <button class="option-btn" data-answer="19c">Tento ignorar <span class="stat">77%</span></button>
                 </div>
                 <button class="back-btn" id="back19">← Voltar</button>
             </section>
 
-            <section id="verification" class="verification-section" aria-labelledby="verification-title" aria-live="polite">
-                <div class="checkmark" aria-hidden="true">✅</div>
-                <h2 id="verification-title" class="verification-title">PERFEITO! VERIFICANDO SEU PERFIL...</h2>
-                <p class="verification-text">Estamos analisando suas <strong>15 respostas</strong> para personalizar sua <span class="loading-dots" aria-label="carregando">receita secreta...</span></p>
-                <div class="progress-circle" role="status" aria-label="Processando"></div>
+            <section id="verification" class="verification-section">
+                <div class="checkmark">✅</div>
+                <h2 class="verification-title">PERFEITO! VERIFICANDO SEU PERFIL...</h2>
+                <p class="verification-text">Estamos analisando suas <strong>15 respostas</strong> para personalizar sua <span class="loading-dots">receita secreta...</span></p>
+                <div class="progress-circle"></div>
                 <p class="verification-text" style="font-size: 18px; color: #FF5722; font-weight: bold;">⏳ Preparando Pergunta 16 de 20</p>
             </section>
 
-            <section id="q20" class="question-section" aria-labelledby="q20-title">
-                <h2 id="q20-title" class="question-title">Quantos remédios/chás/diets você já testou nos últimos 2 anos?</h2>
+            <section id="q20" class="question-section">
+                <h2 class="question-title">Quantos remédios/chás/diets você já testou nos últimos 2 anos?</h2>
                 <div class="options-grid">
-                    <button class="option-btn" data-answer="20a" aria-describedby="stat20a">+8 produtos <span id="stat20a" class="stat">90%</span></button>
-                    <button class="option-btn" data-answer="20b" aria-describedby="stat20b">5-7 produtos <span id="stat20b" class="stat">84%</span></button>
-                    <button class="option-btn" data-answer="20c" aria-describedby="stat20c">2-4 produtos <span id="stat20c" class="stat">70%</span></button>
+                    <button class="option-btn" data-answer="20a">+8 produtos <span class="stat">90%</span></button>
+                    <button class="option-btn" data-answer="20b">5-7 produtos <span class="stat">84%</span></button>
+                    <button class="option-btn" data-answer="20c">2-4 produtos <span class="stat">70%</span></button>
                 </div>
                 <button class="back-btn" id="back20">← Voltar</button>
             </section>
 
-            <article id="result" aria-labelledby="result-title">
-                <h1 id="result-title" class="persuasion-title">🎉 VOCÊ FOI SELECIONADO EXCLUSIVAMENTE! 🎉</h1>
-                <div class="score-box" id="scoreBox" role="status">Seu Score: Calculando...</div>
+            <article id="result">
+                <h1 class="persuasion-title">🎉 VOCÊ FOI SELECIONADO EXCLUSIVAMENTE! 🎉</h1>
+                <div class="score-box" id="scoreBox">Seu Score: Calculando...</div>
                 <p class="persuasion-subtitle">A RECEITA MILAGROSA que DERRETE 15KG em 30 DIAS está ESPERANDO POR VOCÊ!</p>
                 
                 <figure class="video-container">
-                    <div id="ifr_682b77713a21af615f615cf3_wrapper" class="converteai-wrapper">
-                        <div id="ifr_682b77713a21af615f615cf3_aspect" class="converteai-aspect">
-                            <iframe frameborder="0" allowfullscreen src="about:blank" id="ifr_682b77713a21af615f615cf3" title="Vídeo explicativo do Método Secar em 20 Dias" referrerpolicy="origin" onload="this.onload=null; this.src='https://scripts.converteai.net/450e08d4-eaa1-4c84-ab4c-34d77b117dc8/players/682b77713a21af615f615cf3/v4/embed.html' + (location.search || '?') + '&vl=' + encodeURIComponent(location.href)"></iframe>
+                    <div class="converteai-wrapper">
+                        <div class="converteai-aspect">
+                            <iframe frameborder="0" allowfullscreen src="about:blank" id="video-iframe" onload="this.onload=null; this.src='https://scripts.converteai.net/450e08d4-eaa1-4c84-ab4c-34d77b117dc8/players/682b77713a21af615f615cf3/v4/embed.html' + (location.search || '?') + '&vl=' + encodeURIComponent(location.href)"></iframe>
                         </div>
                     </div>
-                    <figcaption class="sr-only">Vídeo explicativo do Método Secar em 20 Dias</figcaption>
                 </figure>
 
-                <section class="urgency-box" aria-labelledby="urgency-title">
-                    <h2 id="urgency-title" class="sr-only">Oferta especial limitada</h2>
-                    <div class="countdown" id="countdown" aria-live="polite">Oferta acaba em: 15:00</div>
-                    <p style="font-size: 20px; margin: 20px 0;">🔥 <strong>20.000+ MULHERES TRANSFORMADAS!</strong><br>✅ Sem fome • ✅ Sem academia • ✅ APENAS R$12</p>
-                    <div class="price-highlight" id="priceHighlight">APENAS R$97<br><span style="font-size: 20px;">(De R$297 - 67% OFF)</span></div>
-                    <button class="buy-btn" onclick="buyNow()" aria-label="Comprar receita por R$97">💰 COMPRAR AGORA 💰</button>
-                    <section class="testimonials" aria-label="Depoimentos reais">
+                <section class="urgency-box">
+                    <div class="countdown" id="countdown">Oferta acaba em: 15:00</div>
+                    <p style="font-size: 20px; margin: 20px 0;">🔥 <strong>20.000+ MULHERES TRANSFORMADAS!</strong><br>✅ Sem fome • ✅ Sem academia • ✅ APENAS R$29,90</p>
+                    <div class="price-highlight" id="priceHighlight">APENAS R$29,90<br><span style="font-size: 20px;">(De R$297 - 90% OFF)</span></div>
+                    <button class="buy-btn" onclick="buyNow()">💰 COMPRAR AGORA 💰</button>
+                    <section class="testimonials">
                         <blockquote class="testimonial">"15kg em 28 dias! INCREDÍVEL!" - Ana, 34</blockquote>
                         <blockquote class="testimonial">"Minha barriga SUMIU!" - João, 42</blockquote>
                         <blockquote class="testimonial">"Energia o DIA TODO!" - Maria, 29</blockquote>
                     </section>
                     <div class="guarantee">💡 <strong>GARANTIA TOTAL: 30 dias ou SEU DINHEIRO DE VOLTA!</strong></div>
-                    <button class="buy-btn" onclick="buyNow()" aria-label="Confirmar compra da receita">✅ SIM, QUERO MINHA RECEITA JÁ!</button>
+                    <button class="buy-btn" onclick="buyNow()">✅ SIM, QUERO MINHA RECEITA JÁ!</button>
                 </section>
             </article>
         </main>
     </div>
 
-    <!-- EXIT POPUP -->
-    <aside class="exit-popup" id="exitPopup" role="dialog" aria-labelledby="exit-title" aria-modal="true">
+    <div class="exit-popup" id="exitPopup">
         <div class="exit-content">
-            <h2 id="exit-title">⏰ NÃO VÁ EMBORA! OFERTA EXCLUSIVA!</h2>
-            <p><strong>R$97 → APENAS R$67 AGORA!</strong></p>
-            <button class="buy-btn" onclick="buyNow()" aria-label="Comprar por R$67 no popup de saída">COMPRAR POR R$67!</button>
+            <h2>⏰ NÃO VÁ EMBORA! OFERTA EXCLUSIVA!</h2>
+            <p><strong>R$97 → APENAS R$29,90 AGORA!</strong></p>
+            <button class="buy-btn" onclick="buyNow()">COMPRAR POR R$29,90!</button>
         </div>
-    </aside>
+    </div>
 
     <script>
-        // Script para carregar o vídeo ConverteAI
         var s = document.createElement("script");
         s.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
         s.async = true;
         document.head.appendChild(s);
 
-        const totalQuestions = 20; let currentQuestion = 1; let answers = {}; let countdownTime = 900;
+        const totalQuestions = 20; let currentQuestion = 1; let countdownTime = 900;
         let buyers = ['Carolina', 'João', 'Maria', 'Ana', 'Pedro', 'Lucas', 'Fernanda'];
-        
-        // ✅ INICIALIZAÇÃO SEGURA
+
         function init() {
             updateProgress();
             initOptionButtons();
             initBackButtons();
         }
 
-        // ✅ BOTÕES DE OPÇÃO - 100% SEGURO
         function initOptionButtons() {
-            const optionButtons = document.querySelectorAll('.option-btn');
-            optionButtons.forEach(btn => {
+            document.querySelectorAll('.option-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const section = this.closest('section');
                     if (!section) return;
                     
-                    const qNum = section.id.replace('q', '');
-                    
-                    // LIMPA SELEÇÕES
                     this.parentElement.querySelectorAll('.option-btn').forEach(b => {
                         b.classList.remove('selected', 'processing');
-                        b.setAttribute('aria-pressed', 'false');
                     });
                     
-                    // PROCESSAMENTO VISUAL
                     this.classList.add('selected', 'processing');
-                    this.setAttribute('aria-pressed', 'true');
-                    answers[qNum] = this.dataset.answer;
                     
                     setTimeout(() => {
                         this.classList.remove('processing');
                         
                         setTimeout(() => {
                             if (currentQuestion < totalQuestions) {
-                                const currentSection = document.getElementById(`q${currentQuestion}`);
-                                const nextSection = document.getElementById(`q${currentQuestion + 1}`);
-                                
-                                if (currentSection) currentSection.classList.remove('active');
-                                
+                                document.getElementById(`q${currentQuestion}`).classList.remove('active');
                                 currentQuestion++;
                                 
-                                // VERIFICAÇÃO APÓS Q15
                                 if (currentQuestion === 16) {
-                                    const verificationSection = document.getElementById('verification');
-                                    const q16Section = document.getElementById('q16');
-                                    if (verificationSection && q16Section) {
-                                        q16Section.classList.remove('active');
-                                        verificationSection.classList.add('active');
-                                        document.getElementById('progressTitle').textContent = 'Preparando sua receita secreta...';
-                                        
-                                        setTimeout(() => {
-                                            verificationSection.classList.remove('active');
-                                            q16Section.classList.add('active');
-                                            updateProgress();
-                                        }, 2500);
-                                    }
+                                    const verification = document.getElementById('verification');
+                                    const q16 = document.getElementById('q16');
+                                    q16.classList.remove('active');
+                                    verification.classList.add('active');
+                                    document.getElementById('progressTitle').textContent = 'Preparando sua receita secreta...';
+                                    
+                                    setTimeout(() => {
+                                        verification.classList.remove('active');
+                                        q16.classList.add('active');
+                                        updateProgress();
+                                    }, 2500);
                                 } else {
+                                    const nextSection = document.getElementById(`q${currentQuestion}`);
                                     if (nextSection) nextSection.classList.add('active');
                                     const backBtn = document.getElementById(`back${currentQuestion}`);
                                     if (backBtn) backBtn.classList.add('active');
                                     updateProgress();
                                 }
-                                
-                                if (currentQuestion > 17) alert('🎉 SÓ +3 PERGUNTAS E VOCÊ GANHA A RECEITA SECRETA!');
                             } else {
                                 showResult();
                             }
@@ -476,23 +450,14 @@
             });
         }
 
-        // ✅ BACK BUTTONS - 100% SEGURO
         function initBackButtons() {
             for (let i = 2; i <= totalQuestions; i++) {
                 const backBtn = document.getElementById(`back${i}`);
                 if (backBtn) {
                     backBtn.addEventListener('click', function() {
-                        const currentSection = document.getElementById(`q${currentQuestion}`);
-                        const prevSection = document.getElementById(`q${currentQuestion - 1}`);
-                        
-                        if (currentSection) currentSection.classList.remove('active');
+                        document.getElementById(`q${currentQuestion}`).classList.remove('active');
                         currentQuestion--;
-                        if (prevSection) prevSection.classList.add('active');
-                        
-                        if (currentQuestion === 1) {
-                            const back1 = document.getElementById('back1');
-                            if (back1) back1.disabled = true;
-                        }
+                        document.getElementById(`q${currentQuestion}`).classList.add('active');
                         updateProgress();
                     });
                 }
@@ -501,41 +466,26 @@
 
         function updateProgress() {
             const progress = Math.round((currentQuestion/totalQuestions)*100);
-            const progressFill = document.getElementById('progressFill');
-            const progressTitle = document.getElementById('progressTitle');
+            document.getElementById('progressFill').style.width = progress + '%';
             
-            if (progressFill) {
-                progressFill.style.width = progress + '%';
-                progressFill.setAttribute('aria-valuenow', progress);
-            }
+            let motivationText = '';
+            if (progress < 25) motivationText = 'Você está voando!';
+            else if (progress < 50) motivationText = 'Muito bem! Continua assim!';
+            else if (progress < 75) motivationText = 'Quase lá! Incrível!';
+            else motivationText = 'FINALIZANDO! Você é TOP!';
             
-            if (progressTitle) {
-                let motivationText = '';
-                if (progress < 25) motivationText = 'Você está voando!';
-                else if (progress < 50) motivationText = 'Muito bem! Continua assim!';
-                else if (progress < 75) motivationText = 'Quase lá! Incrível!';
-                else motivationText = 'FINALIZANDO! Você é TOP!';
-                
-                progressTitle.textContent = `Pergunta ${currentQuestion} de 20 • ${motivationText}`;
-            }
+            document.getElementById('progressTitle').textContent = `Pergunta ${currentQuestion} de 20 • ${motivationText}`;
         }
 
         function showResult() {
-            const sections = document.querySelectorAll('.question-section, .verification-section');
-            sections.forEach(section => section.classList.remove('active'));
+            document.querySelectorAll('.question-section, .verification-section').forEach(section => section.classList.remove('active'));
+            document.getElementById('result').style.display = 'block';
             
-            const result = document.getElementById('result');
-            if (result) result.style.display = 'block';
+            const score = Math.floor(Math.random() * 20) + 80;
+            document.getElementById('scoreBox').textContent = `Seu Score: ${score}% - PERFEITO para nossa receita!`;
             
-            const scoreBox = document.getElementById('scoreBox');
-            if (scoreBox) {
-                const score = Math.floor(Math.random() * 20) + 80;
-                scoreBox.textContent = `Seu Score: ${score}% - PERFEITO para nossa receita!`;
-            }
-            
-            const priceHighlight = document.getElementById('priceHighlight');
-            if (priceHighlight && Math.random() > 0.5) {
-                priceHighlight.innerHTML = 'APENAS R$87<br><span style="font-size: 20px;">(De R$297 - 70% OFF)</span>';
+            if (Math.random() > 0.5) {
+                document.getElementById('priceHighlight').innerHTML = 'APENAS R$27,90<br><span style="font-size: 20px;">(De R$297 - 91% OFF)</span>';
             }
             
             confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
@@ -546,44 +496,30 @@
         function startCountdown() {
             setInterval(() => {
                 countdownTime--;
-                const countdown = document.getElementById('countdown');
-                if (countdown) {
-                    const minutes = Math.floor(countdownTime / 60);
-                    const seconds = countdownTime % 60;
-                    countdown.textContent = `Oferta acaba em: ${minutes}:${seconds.toString().padStart(2, '0')}`;
-                    if (countdownTime <= 0) {
-                        countdown.textContent = '⏰ OFERTA ENCERROU!';
-                        document.querySelectorAll('.buy-btn').forEach(btn => btn.disabled = true);
-                    }
-                }
+                const minutes = Math.floor(countdownTime / 60);
+                const seconds = countdownTime % 60;
+                document.getElementById('countdown').textContent = `Oferta acaba em: ${minutes}:${seconds.toString().padStart(2, '0')}`;
             }, 1000);
         }
 
         function startLiveBuyers() {
             setInterval(() => {
-                const liveBuyers = document.getElementById('liveBuyers');
-                if (liveBuyers) {
-                    const randomBuyer = buyers[Math.floor(Math.random() * buyers.length)];
-                    liveBuyers.textContent = `${randomBuyer} acabou de comprar!`;
-                }
+                const randomBuyer = buyers[Math.floor(Math.random() * buyers.length)];
+                document.getElementById('liveBuyers').textContent = `${randomBuyer} acabou de comprar!`;
             }, 3000);
         }
 
         document.addEventListener('mouseleave', (e) => {
             if (e.clientY <= 0) {
-                const exitPopup = document.getElementById('exitPopup');
-                if (exitPopup && !exitPopup.classList.contains('active')) {
-                    exitPopup.classList.add('active');
-                }
+                document.getElementById('exitPopup').classList.add('active');
             }
         });
 
         function buyNow() {
-            window.open('https://pay.kiwify.com.br/6XUzyee?afid=sD8LdYUX', '_blank');
+            window.open('https://pay.kiwify.com.br/4aaPNH6?afid=sD8LdYUX', '_blank');
         }
 
-        // 🚀 INICIA TUDO QUANDO CARREGAR
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
-                        </html>
+</html>
