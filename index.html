@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Secreto: Derreta 15kg em 30 Dias SEM Esforço</title>
+    <meta name="description" content="Descubra sua receita personalizada para perder 15kg em 30 dias SEM fome ou academia! Quiz exclusivo com 20.000+ mulheres transformadas.">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     
     <style>
@@ -115,8 +116,13 @@
         .vibration { animation: vibrate 0.2s ease; }
         @keyframes vibrate { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-2px); } 75% { transform: translateX(2px); } }
         .score-box { background: #4CAF50; color: white; padding: 15px; border-radius: 10px; margin: 20px 0; font-size: 20px; }
-        .video-container { margin: 20px 0; }
-        video { width: 100%; max-width: 400px; border-radius: 15px; }
+        .video-container { margin: 20px 0; text-align: center; }
+        .video-container .converteai-wrapper { width: 100%; max-width: 400px; margin: 0 auto; }
+        .video-container .converteai-aspect { padding: 56.25% 0 0 0; position: relative; }
+        .video-container iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 15px; border: none; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
         .exit-popup { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.9); z-index: 9999; justify-content: center; align-items: center;
@@ -138,6 +144,7 @@
             .price-highlight { font-size: 40px; }
             .question-section, .verification-section { padding: 40px 20px; }
             .back-btn { width: 100%; }
+            .video-container .converteai-wrapper { max-width: 100%; }
         }
     </style>
 </head>
@@ -352,11 +359,12 @@
                 <p class="persuasion-subtitle">A RECEITA MILAGROSA que DERRETE 15KG em 30 DIAS está ESPERANDO POR VOCÊ!</p>
                 
                 <figure class="video-container">
-                    <video autoplay loop muted playsinline aria-label="Vídeo de transformação: depoimentos reais">
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
-                        <img src="https://via.placeholder.com/400x225/FF5722/FFFFFF?text=TRANSFORMAÇÃO" alt="Vídeo de antes e depois de mulheres que perderam 15kg em 30 dias" style="width:100%; max-width:400px;">
-                    </video>
-                    <figcaption class="sr-only">Vídeo demonstrativo de resultados reais</figcaption>
+                    <div id="ifr_682b77713a21af615f615cf3_wrapper" class="converteai-wrapper">
+                        <div id="ifr_682b77713a21af615f615cf3_aspect" class="converteai-aspect">
+                            <iframe frameborder="0" allowfullscreen src="about:blank" id="ifr_682b77713a21af615f615cf3" title="Vídeo explicativo do Método Secar em 20 Dias" referrerpolicy="origin" onload="this.onload=null; this.src='https://scripts.converteai.net/450e08d4-eaa1-4c84-ab4c-34d77b117dc8/players/682b77713a21af615f615cf3/v4/embed.html' + (location.search || '?') + '&vl=' + encodeURIComponent(location.href)"></iframe>
+                        </div>
+                    </div>
+                    <figcaption class="sr-only">Vídeo explicativo do Método Secar em 20 Dias</figcaption>
                 </figure>
 
                 <section class="urgency-box" aria-labelledby="urgency-title">
@@ -387,6 +395,12 @@
     </aside>
 
     <script>
+        // Script para carregar o vídeo ConverteAI
+        var s = document.createElement("script");
+        s.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
+        s.async = true;
+        document.head.appendChild(s);
+
         const totalQuestions = 20; let currentQuestion = 1; let answers = {}; let countdownTime = 900;
         let buyers = ['Carolina', 'João', 'Maria', 'Ana', 'Pedro', 'Lucas', 'Fernanda'];
         
@@ -565,7 +579,7 @@
         });
 
         function buyNow() {
-            window.open('https://seulinkdecompra.com', '_blank');
+            window.open('https://pay.kiwify.com.br/6XUzyee?afid=sD8LdYUX', '_blank');
         }
 
         // 🚀 INICIA TUDO QUANDO CARREGAR
