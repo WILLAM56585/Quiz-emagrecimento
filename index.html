@@ -22,10 +22,51 @@
             position: relative;
         }
         @keyframes slideIn { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .intro-section {
+            padding: 40px 30px; text-align: center; background: linear-gradient(135deg, #FF5722, #FF7043); color: white;
+            animation: fadeInBackground 1s ease-in-out;
+        }
+        @keyframes fadeInBackground {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .intro-title {
+            font-size: 36px; font-weight: bold; margin-bottom: 20px;
+            animation: fadeInScale 1.5s ease-out;
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .intro-image {
+            max-width: 100%; height: auto; margin-bottom: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .intro-text { font-size: 18px; margin-bottom: 20px; animation: fadeIn 1s ease-in 0.5s backwards; }
+        .intro-btn {
+            background: linear-gradient(145deg, #FFD700, #FFA726); color: #333; border: none; padding: 15px 30px;
+            font-size: 20px; font-weight: bold; border-radius: 25px; cursor: pointer; transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .intro-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+        }
         .progress-section {
             background: linear-gradient(90deg, #4CAF50, #81C784); color: white; padding: 15px; text-align: center;
-            position: relative;
+            position: relative; display: none;
         }
+        .progress-section.active { display: block; }
         .progress-bar { background: rgba(255,255,255,0.3); height: 8px; border-radius: 4px; margin: 5px 0; overflow: hidden; }
         .progress-fill { background: #FF5722; height: 100%; width: 0%; transition: width 0.3s ease; border-radius: 4px; }
         .live-buyers { font-size: 12px; margin-top: 5px; color: #FFD700; }
@@ -35,8 +76,16 @@
         .question-section {
             padding: 50px 30px; text-align: center; min-height: 450px;
             display: none; flex-direction: column; justify-content: center;
+            opacity: 0; transition: opacity 0.5s ease;
         }
-        .question-section.active { display: flex; }
+        .question-section.active {
+            display: flex;
+            opacity: 1;
+        }
+        .intro-section.transition-out {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
         .question-title {
             font-size: 32px; color: #4CAF50; margin-bottom: 40px; font-weight: bold; line-height: 1.3;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
@@ -126,29 +175,29 @@
         }
         .exit-popup.active { display: flex; }
         .exit-content { background: white; padding: 40px; border-radius: 20px; text-align: center; max-width: 400px; }
-        .whatsapp-float { 
-            position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; 
-            background: #25D366; border-radius: 50%; display: flex; align-items: center; 
-            justify-content: center; font-size: 30px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            z-index: 1000; transition: transform 0.3s ease;
-        }
-        .whatsapp-float:hover { transform: scale(1.1); }
         @media (max-width: 768px) {
             .options-grid { grid-template-columns: 1fr; gap: 12px; }
             .question-title { font-size: 26px; }
             .verification-title { font-size: 28px; }
             .persuasion-title { font-size: 36px; }
             .price-highlight { font-size: 40px; }
-            .question-section, .verification-section { padding: 40px 20px; }
+            .question-section, .verification-section, .intro-section { padding: 40px 20px; }
             .back-btn { width: 100%; }
             .video-container .converteai-wrapper { max-width: 100%; }
+            .intro-title { font-size: 28px; }
+            .intro-text { font-size: 16px; }
         }
     </style>
 </head>
 <body>
-    <div class="whatsapp-float" onclick="buyNow()">💰</div>
-
     <div class="quiz-container">
+        <section class="intro-section">
+            <h1 class="intro-title">Descubra Sua Receita Secreta!</h1>
+            <img src="https://i.ibb.co/DHyGF0kq/Grupo-01.png" alt="Imagem de introdução" class="intro-image">
+            <p class="intro-text">Olhe essa imagem e veja como milhares transformaram suas vidas! Você também pode derreter 15kg em 30 dias sem esforço, sem fome e sem academia. Clique agora e comece sua jornada!</p>
+            <button class="intro-btn" onclick="startQuiz()">COMEÇAR AGORA</button>
+        </section>
+
         <header class="progress-section">
             <div class="progress-title" id="progressTitle">Pergunta 1 de 20 • Você está voando!</div>
             <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
@@ -156,11 +205,12 @@
         </header>
 
         <main>
-            <section id="q1" class="question-section active">
+            <section id="q1" class="question-section">
                 <h2 class="question-title">Qual sua maior dificuldade para emagrecer?</h2>
                 <div class="options-grid">
                     <button class="option-btn" data-answer="1a">Fome constante <span class="stat">93%</span></button>
                     <button class="option-btn" data-answer="1b">Metabolismo lento <span class="stat">82%</span></button>
+                    <button class="option-btn" data-answer="1c">Não tenho dificuldades específicas <span class="stat">60%</span></button>
                 </div>
                 <button class="back-btn" id="back1" disabled>← Voltar</button>
             </section>
@@ -170,6 +220,7 @@
                 <div class="options-grid">
                     <button class="option-btn" data-answer="2a">Toda semana <span class="stat">87%</span></button>
                     <button class="option-btn" data-answer="2b">Desisto rápido <span class="stat">91%</span></button>
+                    <button class="option-btn" data-answer="2c">Quase não faço dieta <span class="stat">65%</span></button>
                 </div>
                 <button class="back-btn" id="back2">← Voltar</button>
             </section>
@@ -179,6 +230,7 @@
                 <div class="options-grid">
                     <button class="option-btn" data-answer="3a">Barriga <span class="stat">95%</span></button>
                     <button class="option-btn" data-answer="3b">Coxas/braços <span class="stat">78%</span></button>
+                    <button class="option-btn" data-answer="3c">Não acumulo gordura específica <span class="stat">50%</span></button>
                 </div>
                 <button class="back-btn" id="back3">← Voltar</button>
             </section>
@@ -188,6 +240,7 @@
                 <div class="options-grid">
                     <button class="option-btn" data-answer="4a">Menos de 35 <span class="stat">84%</span></button>
                     <button class="option-btn" data-answer="4b">35 ou mais <span class="stat">89%</span></button>
+                    <button class="option-btn" data-answer="4c">Prefiro não informar <span class="stat">70%</span></button>
                 </div>
                 <button class="back-btn" id="back4">← Voltar</button>
             </section>
@@ -197,6 +250,7 @@
                 <div class="options-grid">
                     <button class="option-btn" data-answer="5a">Quase nunca <span class="stat">92%</span></button>
                     <button class="option-btn" data-answer="5b">Prefiro em casa <span class="stat">81%</span></button>
+                    <button class="option-btn" data-answer="5c">Vou regularmente <span class="stat">60%</span></button>
                 </div>
                 <button class="back-btn" id="back5">← Voltar</button>
             </section>
@@ -206,6 +260,7 @@
                 <div class="options-grid">
                     <button class="option-btn" data-answer="6a">5-10kg <span class="stat">88%</span></button>
                     <button class="option-btn" data-answer="6b">+10kg <span class="stat">76%</span></button>
+                    <button class="option-btn" data-answer="6c">Não quero emagrecer muito <span class="stat">55%</span></button>
                 </div>
                 <button class="back-btn" id="back6">← Voltar</button>
             </section>
@@ -215,6 +270,7 @@
                 <div class="options-grid">
                     <button class="option-btn" data-answer="7a">Muito dinheiro <span class="stat">94%</span></button>
                     <button class="option-btn" data-answer="7b">Cansado de perder <span class="stat">90%</span></button>
+                    <button class="option-btn" data-answer="7c">Nunca gastei <span class="stat">65%</span></button>
                 </div>
                 <button class="back-btn" id="back7">← Voltar</button>
             </section>
@@ -224,6 +280,7 @@
                 <div class="options-grid">
                     <button class="option-btn" data-answer="8a">Sim, 2L+ <span class="stat">67%</span></button>
                     <button class="option-btn" data-answer="8b">Quase nunca <span class="stat">96%</span></button>
+                    <button class="option-btn" data-answer="8c">Às vezes <span class="stat">70%</span></button>
                 </div>
                 <button class="back-btn" id="back8">← Voltar</button>
             </section>
@@ -233,6 +290,7 @@
                 <div class="options-grid">
                     <button class="option-btn" data-answer="9a">7-9 horas <span class="stat">72%</span></button>
                     <button class="option-btn" data-answer="9b">Menos de 6h <span class="stat">85%</span></button>
+                    <button class="option-btn" data-answer="9c">Depende dos dias <span class="stat">60%</span></button>
                 </div>
                 <button class="back-btn" id="back9">← Voltar</button>
             </section>
@@ -242,6 +300,7 @@
                 <div class="options-grid">
                     <button class="option-btn" data-answer="10a">Baixo <span class="stat">45%</span></button>
                     <button class="option-btn" data-answer="10b">Alto <span class="stat">98%</span></button>
+                    <button class="option-btn" data-answer="10c">Moderado <span class="stat">70%</span></button>
                 </div>
                 <button class="back-btn" id="back10">← Voltar</button>
             </section>
@@ -251,6 +310,7 @@
                 <div class="options-grid">
                     <button class="option-btn" data-answer="11a">Semanalmente <span class="stat">79%</span></button>
                     <button class="option-btn" data-answer="11b">Todo dia <span class="stat">83%</span></button>
+                    <button class="option-btn" data-answer="11c">Raramente <span class="stat">60%</span></button>
                 </div>
                 <button class="back-btn" id="back11">← Voltar</button>
             </section>
@@ -260,6 +320,7 @@
                 <div class="options-grid">
                     <button class="option-btn" data-answer="12a">Diabetes <span class="stat">88%</span></button>
                     <button class="option-btn" data-answer="12b">Pressão alta <span class="stat">91%</span></button>
+                    <button class="option-btn" data-answer="12c">Não tenho nenhum desses problemas <span class="stat">70%</span></button>
                 </div>
                 <button class="back-btn" id="back12">← Voltar</button>
             </section>
@@ -269,6 +330,7 @@
                 <div class="options-grid">
                     <button class="option-btn" data-answer="13a">Todo dia <span class="stat">65%</span></button>
                     <button class="option-btn" data-answer="13b">Quase nunca <span class="stat">92%</span></button>
+                    <button class="option-btn" data-answer="13c">Às vezes <span class="stat">60%</span></button>
                 </div>
                 <button class="back-btn" id="back13">← Voltar</button>
             </section>
@@ -278,6 +340,7 @@
                 <div class="options-grid">
                     <button class="option-btn" data-answer="14a">Em 15 dias <span class="stat">97%</span></button>
                     <button class="option-btn" data-answer="14b">Em 30 dias <span class="stat">89%</span></button>
+                    <button class="option-btn" data-answer="14c">Sem pressa <span class="stat">65%</span></button>
                 </div>
                 <button class="back-btn" id="back14">← Voltar</button>
             </section>
@@ -287,6 +350,7 @@
                 <div class="options-grid">
                     <button class="option-btn" data-answer="15a">AGORA! <span class="stat">99%</span></button>
                     <button class="option-btn" data-answer="15b">HOJE! <span class="stat">98%</span></button>
+                    <button class="option-btn" data-answer="15c">Ainda pensando <span class="stat">70%</span></button>
                 </div>
                 <button class="back-btn" id="back15">← Voltar</button>
             </section>
@@ -400,6 +464,18 @@
             updateProgress();
             initOptionButtons();
             initBackButtons();
+        }
+
+        function startQuiz() {
+            const introSection = document.querySelector('.intro-section');
+            introSection.classList.add('transition-out');
+            
+            setTimeout(() => {
+                introSection.style.display = 'none';
+                document.querySelector('.progress-section').classList.add('active');
+                document.getElementById('q1').classList.add('active');
+                updateProgress();
+            }, 500); // Tempo da transição (0.5s)
         }
 
         function initOptionButtons() {
@@ -522,4 +598,4 @@
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
-</html>
+                </html>
