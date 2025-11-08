@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz: Emagreça com Saúde Após os 50</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1905467250179985');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1905467250179985&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -61,7 +79,7 @@
             accent-color: #4a90e2;
         }
         button {
-            background-color: #4a90e2;
+            background: linear-gradient(135deg, #4a90e2, #357abd);
             color: white;
             padding: 12px 24px;
             border: none;
@@ -69,18 +87,26 @@
             cursor: pointer;
             font-size: 16px;
             font-weight: 700;
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin: 20px auto;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         button:hover {
-            background-color: #357abd;
-            transform: scale(1.05);
+            background: linear-gradient(135deg, #357abd, #4a90e2);
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         button:disabled {
-            background-color: #cccccc;
+            background: linear-gradient(135deg, #cccccc, #b3b3b3);
             cursor: not-allowed;
             transform: none;
+            box-shadow: none;
+        }
+        button i {
+            margin-left: 8px;
         }
         .progress-bar {
             background-color: #e0e0e0;
@@ -127,7 +153,7 @@
         
         <div class="introduction active" id="intro">
             <p>Vamos entender como seu corpo reage ao emagrecimento para encontrar a melhor solução para você. Este quiz é rápido e confidencial, feito especialmente para mulheres como você, que buscam equilíbrio e bem-estar. Responda com sinceridade para um resultado personalizado.</p>
-            <button id="start-btn">Vamos começar?</button>
+            <button id="start-btn">Vamos começar? <i class="fas fa-arrow-right"></i></button>
         </div>
 
         <div class="progress-bar" id="progress-bar">
@@ -141,7 +167,7 @@
                 <label><input type="radio" name="q1" value="hormonal"> Tenho picos e quedas, especialmente após as refeições.</label>
                 <label><input type="radio" name="q1" value="ansiedade"> Fico agitada ou ansiosa, o que me faz comer mais.</label>
                 <label><input type="radio" name="q1" value="none"> Geralmente boa, mas poderia melhorar.</label>
-                <button type="button" class="next-btn" disabled>Próxima</button>
+                <button type="button" class="next-btn" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
             </div>
 
             <div class="question" id="q2">
@@ -150,7 +176,7 @@
                 <label><input type="radio" name="q2" value="metabolismo"> Não muito, mas meu peso varia pouco mesmo com dieta.</label>
                 <label><input type="radio" name="q2" value="ansiedade"> Só quando estou estressada.</label>
                 <label><input type="radio" name="q2" value="none"> Raramente.</label>
-                <button type="button" class="next-btn" disabled>Próxima</button>
+                <button type="button" class="next-btn" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
             </div>
 
             <div class="question" id="q3">
@@ -159,7 +185,7 @@
                 <label><input type="radio" name="q3" value="metabolismo"> Durmo o suficiente, mas acordo cansada.</label>
                 <label><input type="radio" name="q3" value="hormonal"> Varia com ciclos hormonais ou menopausa.</label>
                 <label><input type="radio" name="q3" value="none"> Boa e reparadora.</label>
-                <button type="button" class="next-btn" disabled>Próxima</button>
+                <button type="button" class="next-btn" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
             </div>
 
             <div class="question" id="q4">
@@ -168,7 +194,7 @@
                 <label><input type="radio" name="q4" value="metabolismo"> Não, mas sinto fome constante mesmo comendo bem.</label>
                 <label><input type="radio" name="q4" value="hormonal"> Às vezes, ligado a oscilações de humor.</label>
                 <label><input type="radio" name="q4" value="none"> Não acontece.</label>
-                <button type="button" class="next-btn" disabled>Próxima</button>
+                <button type="button" class="next-btn" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
             </div>
 
             <div class="question" id="q5">
@@ -177,7 +203,7 @@
                 <label><input type="radio" name="q5" value="metabolismo"> O estresse me deixa exausta, sem energia para exercícios.</label>
                 <label><input type="radio" name="q5" value="hormonal"> Afeta meu ciclo hormonal, como TPM ou menopausa.</label>
                 <label><input type="radio" name="q5" value="none"> Gerencio bem, sem impactos grandes.</label>
-                <button type="button" class="next-btn" disabled>Próxima</button>
+                <button type="button" class="next-btn" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
             </div>
 
             <div class="question" id="q6">
@@ -186,7 +212,7 @@
                 <label><input type="radio" name="q6" value="hormonal"> Funcionam no início, mas hormônios atrapalham.</label>
                 <label><input type="radio" name="q6" value="ansiedade"> Quebro as dietas por ansiedade ou compulsão.</label>
                 <label><input type="radio" name="q6" value="none"> Nunca precisei ou foram bem-sucedidas.</label>
-                <button type="button" class="next-btn" disabled>Próxima</button>
+                <button type="button" class="next-btn" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
             </div>
 
             <div class="question" id="q7">
@@ -195,7 +221,7 @@
                 <label><input type="radio" name="q7" value="hormonal"> Sim, mas noto inchaço ou fadiga após.</label>
                 <label><input type="radio" name="q7" value="ansiedade"> Evito porque o estresse aumenta.</label>
                 <label><input type="radio" name="q7" value="none"> Sim, e me sinto bem.</label>
-                <button type="button" class="next-btn" disabled>Próxima</button>
+                <button type="button" class="next-btn" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
             </div>
 
             <div class="question" id="q8">
@@ -204,7 +230,7 @@
                 <label><input type="radio" name="q8" value="hormonal"> Evito certos alimentos por medo de inchaço hormonal.</label>
                 <label><input type="radio" name="q8" value="ansiedade"> Como mais quando estou emocional.</label>
                 <label><input type="radio" name="q8" value="none"> Equilibrados e sem problemas.</label>
-                <button type="submit" id="submit-btn" disabled>Ver meu resultado</button>
+                <button type="submit" id="submit-btn" disabled>Ver meu resultado <i class="fas fa-check"></i></button>
             </div>
         </form>
 
@@ -234,7 +260,7 @@
             </div>
 
             <p><strong>Oferta especial:</strong> Últimas vagas disponíveis nesta semana! Aproveite o acesso imediato por um valor acessível, com garantia de 30 dias — se não gostar, devolvemos seu investimento sem perguntas.</p>
-            <button onclick="alert('Redirecionando para compra segura...');">Quero minha receita agora!</button>
+            <button onclick="alert('Redirecionando para compra segura...');">Quero minha receita agora! <i class="fas fa-shopping-cart"></i></button>
         </div>
     </div>
 
