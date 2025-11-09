@@ -145,6 +145,19 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            button {
+                width: 100%;
+                font-size: 18px;
+                padding: 15px;
+            }
+            label {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -259,8 +272,8 @@
                 <div class="testimonial">"Controlou minha ansiedade alimentar. Agora como com prazer e sem culpa." — Lucia M., 60 anos.</div>
             </div>
 
-            <p><strong>Oferta especial:</strong> Este guia está disponível apenas para mulheres que completaram o quiz nesta semana. Aproveite enquanto está liberado!</p>
-            <button onclick="alert('Redirecionando para compra segura...');">Começar minha transformação <i class="fas fa-shopping-cart"></i></button>
+            <p><strong>Oferta especial:</strong> Este guia está disponível apenas para mulheres que completaram o quiz hoje. Aproveite enquanto está liberado!</p>
+            <button id="cta-btn" onclick="alert('Redirecionando para compra segura...');">Começar minha transformação <i class="fas fa-shopping-cart"></i></button>
         </div>
     </div>
 
@@ -330,16 +343,16 @@
             let profile, description, recommendation;
             if (scores.metabolismo === maxScore) {
                 profile = 'Metabolismo Desacelerado';
-                description = 'Seu corpo pode estar processando energia mais devagar, o que é comum após os 50 anos. Isso explica o cansaço constante e a dificuldade em perder peso, mesmo com esforços. Mas há esperança: com ajustes naturais, você pode acelerar isso de forma segura e recuperar vitalidade.';
-                recommendation = 'Para o seu perfil de Metabolismo Desacelerado, o segredo está em receitas naturais que impulsionam o metabolismo e restauram sua energia diária.';
+                description = 'Entendemos como é frustrante se sentir cansada o tempo todo, mesmo tentando de tudo para perder peso. Seu metabolismo pode estar mais lento agora, mas isso não precisa ser permanente. Você merece se sentir vibrante e cheia de energia novamente!';
+                recommendation = 'Para o seu perfil de Metabolismo Desacelerado, recomendamos receitas naturais que impulsionam o metabolismo de forma gentil, ajudando você a recuperar a vitalidade e o equilíbrio que tanto busca. Descubra como essas receitas podem transformar sua rotina.';
             } else if (scores.hormonal === maxScore) {
                 profile = 'Sensibilidade Hormonal';
-                description = 'Oscilações hormonais, como na menopausa, parecem influenciar seu inchaço e energia. Isso afeta o equilíbrio do corpo, mas soluções naturais podem harmonizar tudo, reduzindo desconfortos e promovendo bem-estar.';
-                recommendation = 'Para o seu perfil de Sensibilidade Hormonal, o segredo está em receitas naturais que equilibram hormônios e reduzem inchaços e variações de energia.';
+                description = 'Sabemos como as oscilações hormonais podem deixar você se sentindo inchada e instável emocionalmente. É comum nessa fase da vida, mas você não está sozinha nisso. Imagine equilibrar tudo isso e se sentir confiante no seu corpo mais uma vez.';
+                recommendation = 'Para o seu perfil de Sensibilidade Hormonal, recomendamos receitas naturais que harmonizam os hormônios, reduzindo inchaços e estabilizando sua energia. Veja como essas soluções podem trazer paz e bem-estar para o seu dia a dia.';
             } else {
                 profile = 'Ansiedade Alimentar';
-                description = 'O estresse e as emoções estão ligados aos seus hábitos, levando a compulsões ou interrupções em dietas. Com apoio empático, você pode gerenciar isso, ganhando controle e confiança no processo de emagrecimento.';
-                recommendation = 'Para o seu perfil de Ansiedade Alimentar, o segredo está em receitas naturais que acalmam o estresse e ajudam a controlar impulsos emocionais.';
+                description = 'Compreendemos o quanto o estresse e as emoções podem tornar a alimentação um desafio, levando a momentos de compulsão que depois trazem culpa. Você merece uma relação saudável com a comida, cheia de prazer e sem julgamentos.';
+                recommendation = 'Para o seu perfil de Ansiedade Alimentar, recomendamos receitas naturais que acalmam a mente e controlam impulsos emocionais, ajudando você a ganhar confiança e controle. Explore como essas receitas podem ser o apoio que você precisa.';
             }
 
             document.getElementById('profile').innerHTML = `<strong>Perfil: ${profile}</strong><br>${description}`;
@@ -355,7 +368,19 @@
                 offerSection.classList.add('active', 'fade-in');
             }, 10);
 
-            // Para remarketing: Aqui você poderia integrar com um script de tracking ou capturar email
+            // Rastrear evento ViewContent no Facebook Pixel
+            fbq('track', 'ViewContent', {
+                content_name: 'Quiz Result',
+                content_category: profile
+            });
+
+            // Para remarketing: Eventos customizados por perfil
+            fbq('trackCustom', 'QuizResultViewed', { profile: profile });
+
+            // Para o clique no botão (exemplo de Lead ou Purchase em produção)
+            document.getElementById('cta-btn').addEventListener('click', () => {
+                fbq('trackCustom', 'QuizCTAClicked', { profile: profile });
+            });
         });
     </script>
 </body>
