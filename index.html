@@ -237,7 +237,7 @@
         <div class="result" id="result-section" style="display: none;">
             <h2>Seu Resultado Personalizado</h2>
             <p id="profile"></p>
-            <p>Recomendação: Independentemente do perfil, o segredo está em receitas naturais que respeitam seu corpo maduro. Continue para descobrir como.</p>
+            <p id="recommendation"></p>
         </div>
 
         <div class="offer" id="offer-section" style="display: none;">
@@ -259,8 +259,8 @@
                 <div class="testimonial">"Controlou minha ansiedade alimentar. Agora como com prazer e sem culpa." — Lucia M., 60 anos.</div>
             </div>
 
-            <p><strong>Oferta especial:</strong> Últimas vagas disponíveis nesta semana! Aproveite o acesso imediato por um valor acessível, com garantia de 30 dias — se não gostar, devolvemos seu investimento sem perguntas.</p>
-            <button onclick="alert('Redirecionando para compra segura...');">Quero minha receita agora! <i class="fas fa-shopping-cart"></i></button>
+            <p><strong>Oferta especial:</strong> Este guia está disponível apenas para mulheres que completaram o quiz nesta semana. Aproveite enquanto está liberado!</p>
+            <button onclick="alert('Redirecionando para compra segura...');">Começar minha transformação <i class="fas fa-shopping-cart"></i></button>
         </div>
     </div>
 
@@ -327,19 +327,23 @@
             }
 
             let maxScore = Math.max(scores.metabolismo, scores.hormonal, scores.ansiedade);
-            let profile, description;
+            let profile, description, recommendation;
             if (scores.metabolismo === maxScore) {
                 profile = 'Metabolismo Desacelerado';
                 description = 'Seu corpo pode estar processando energia mais devagar, o que é comum após os 50 anos. Isso explica o cansaço constante e a dificuldade em perder peso, mesmo com esforços. Mas há esperança: com ajustes naturais, você pode acelerar isso de forma segura e recuperar vitalidade.';
+                recommendation = 'Para o seu perfil de Metabolismo Desacelerado, o segredo está em receitas naturais que impulsionam o metabolismo e restauram sua energia diária.';
             } else if (scores.hormonal === maxScore) {
                 profile = 'Sensibilidade Hormonal';
                 description = 'Oscilações hormonais, como na menopausa, parecem influenciar seu inchaço e energia. Isso afeta o equilíbrio do corpo, mas soluções naturais podem harmonizar tudo, reduzindo desconfortos e promovendo bem-estar.';
+                recommendation = 'Para o seu perfil de Sensibilidade Hormonal, o segredo está em receitas naturais que equilibram hormônios e reduzem inchaços e variações de energia.';
             } else {
                 profile = 'Ansiedade Alimentar';
                 description = 'O estresse e as emoções estão ligados aos seus hábitos, levando a compulsões ou interrupções em dietas. Com apoio empático, você pode gerenciar isso, ganhando controle e confiança no processo de emagrecimento.';
+                recommendation = 'Para o seu perfil de Ansiedade Alimentar, o segredo está em receitas naturais que acalmam o estresse e ajudam a controlar impulsos emocionais.';
             }
 
             document.getElementById('profile').innerHTML = `<strong>Perfil: ${profile}</strong><br>${description}`;
+            document.getElementById('recommendation').innerHTML = recommendation;
             questions.forEach(q => document.getElementById(q).style.display = 'none');
             progressBar.style.display = 'none';
             const resultSection = document.getElementById('result-section');
