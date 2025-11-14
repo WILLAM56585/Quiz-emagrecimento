@@ -145,6 +145,12 @@
             width: 0;
             transition: width 0.5s ease;
         }
+        .progress-text {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #4a90e2;
+            font-weight: bold;
+        }
         .testimonials {
             margin-top: 30px;
             padding: 20px;
@@ -223,6 +229,25 @@
         .footer a:hover {
             text-decoration: underline;
         }
+        .question-icon {
+            text-align: center;
+            font-size: 2em;
+            color: #C8A2C8; /* Lilás */
+            margin-bottom: 10px;
+        }
+        .mini-result {
+            text-align: center;
+            font-size: 1.5em;
+            color: #4CAF50; /* Verde claro */
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .score {
+            text-align: center;
+            font-size: 1.2em;
+            color: #ADD8E6; /* Azul claro */
+            margin-bottom: 20px;
+        }
         @media (max-width: 600px) {
             .container {
                 padding: 20px;
@@ -256,6 +281,8 @@
 
         <form id="quiz-form">
             <div class="question" id="q1">
+                <div class="progress-text">Pergunta 1 de 8</div>
+                <div class="question-icon"><i class="fas fa-bolt"></i></div>
                 <h2>Pergunta 1: Como você descreveria sua energia ao longo do dia?</h2>
                 <label><input type="radio" name="q1" value="metabolismo"> Sempre me sinto cansada, mesmo após uma boa noite de sono.</label>
                 <label><input type="radio" name="q1" value="hormonal"> Tenho picos e quedas, especialmente após as refeições.</label>
@@ -265,6 +292,8 @@
             </div>
 
             <div class="question" id="q2">
+                <div class="progress-text">Pergunta 2 de 8</div>
+                <div class="question-icon"><i class="fas fa-tint"></i></div>
                 <h2>Pergunta 2: Você nota retenção de líquidos ou inchaço com frequência?</h2>
                 <label><input type="radio" name="q2" value="hormonal"> Sim, especialmente nas pernas ou abdômen.</label>
                 <label><input type="radio" name="q2" value="metabolismo"> Não muito, mas meu peso varia pouco mesmo com dieta.</label>
@@ -274,6 +303,8 @@
             </div>
 
             <div class="question" id="q3">
+                <div class="progress-text">Pergunta 3 de 8</div>
+                <div class="question-icon"><i class="fas fa-bed"></i></div>
                 <h2>Pergunta 3: Como é sua rotina de sono?</h2>
                 <label><input type="radio" name="q3" value="ansiedade"> Durmo mal, acordo várias vezes ou sinto insônia.</label>
                 <label><input type="radio" name="q3" value="metabolismo"> Durmo o suficiente, mas acordo cansada.</label>
@@ -283,6 +314,8 @@
             </div>
 
             <div class="question" id="q4">
+                <div class="progress-text">Pergunta 4 de 8</div>
+                <div class="question-icon"><i class="fas fa-utensils"></i></div>
                 <h2>Pergunta 4: Você tem episódios de compulsão alimentar, como comer por emoção?</h2>
                 <label><input type="radio" name="q4" value="ansiedade"> Sim, especialmente em momentos de estresse.</label>
                 <label><input type="radio" name="q4" value="metabolismo"> Não, mas sinto fome constante mesmo comendo bem.</label>
@@ -292,6 +325,8 @@
             </div>
 
             <div class="question" id="q5">
+                <div class="progress-text">Pergunta 5 de 8</div>
+                <div class="question-icon"><i class="fas fa-brain"></i></div>
                 <h2>Pergunta 5: Como você lida com o estresse no dia a dia?</h2>
                 <label><input type="radio" name="q5" value="ansiedade"> Fico ansiosa e recorro a lanches para acalmar.</label>
                 <label><input type="radio" name="q5" value="metabolismo"> O estresse me deixa exausta, sem energia para exercícios.</label>
@@ -301,6 +336,8 @@
             </div>
 
             <div class="question" id="q6">
+                <div class="progress-text">Pergunta 6 de 8</div>
+                <div class="question-icon"><i class="fas fa-history"></i></div>
                 <h2>Pergunta 6: Qual é seu histórico com dietas anteriores?</h2>
                 <label><input type="radio" name="q6" value="metabolismo"> Tentei várias, mas o peso volta rápido.</label>
                 <label><input type="radio" name="q6" value="hormonal"> Funcionam no início, mas hormônios atrapalham.</label>
@@ -310,6 +347,8 @@
             </div>
 
             <div class="question" id="q7">
+                <div class="progress-text">Pergunta 7 de 8</div>
+                <div class="question-icon"><i class="fas fa-running"></i></div>
                 <h2>Pergunta 7: Você pratica exercícios regularmente?</h2>
                 <label><input type="radio" name="q7" value="metabolismo"> Tento, mas o cansaço me impede.</label>
                 <label><input type="radio" name="q7" value="hormonal"> Sim, mas noto inchaço ou fadiga após.</label>
@@ -319,6 +358,8 @@
             </div>
 
             <div class="question" id="q8">
+                <div class="progress-text">Pergunta 8 de 8</div>
+                <div class="question-icon"><i class="fas fa-apple-alt"></i></div>
                 <h2>Pergunta 8: Como são seus hábitos alimentares diários?</h2>
                 <label><input type="radio" name="q8" value="metabolismo"> Como alimentos saudáveis, mas não vejo resultados.</label>
                 <label><input type="radio" name="q8" value="hormonal"> Evito certos alimentos por medo de inchaço hormonal.</label>
@@ -330,6 +371,8 @@
 
         <div class="result" id="result-section" style="display: none;">
             <h2>Seu Resultado Personalizado</h2>
+            <div class="score" id="score"></div>
+            <div class="mini-result" id="mini-profile"></div>
             <p id="profile"></p>
             <p id="recommendation"></p>
         </div>
@@ -367,11 +410,11 @@
                 <div class="badge" title="Satisfação Garantida"><i class="fas fa-shield-alt"></i></div>
                 <div class="badge" title="Compra Verificada"><i class="fas fa-check-circle"></i></div>
             </div>
-            <button id="cta-btn" onclick="window.location.href='https://pay.kiwify.com.br/IhX5Pmh?afid=sD8LdYUX';">Quero meu guia por R$27,90 com garantia <i class="fas fa-shopping-cart"></i></button>
+            <button id="cta-btn" onclick="window.location.href='https://pay.kiwify.com.br/IhX5Pmh?afid=sD8LdYUX';" style="background: linear-gradient(135deg, #FF5733, #C70039);">Quero meu guia por R$27,90 com garantia <i class="fas fa-shopping-cart"></i></button>
         </div>
 
         <div class="footer">
-            <p>© 2025 Seu Site. Todos os direitos reservados. Política de Privacidade | Termos de Uso</p>
+            <p>© 2025 Receita para secar. Todos os direitos reservados. Política de Privacidade | Termos de Uso</p>
         </div>
     </div>
 
@@ -437,22 +480,29 @@
                 }
             }
 
+            let totalScore = scores.metabolismo + scores.hormonal + scores.ansiedade;
+            document.getElementById('score').innerHTML = `Sua pontuação: ${totalScore} pontos`;
+
             let maxScore = Math.max(scores.metabolismo, scores.hormonal, scores.ansiedade);
-            let profile, description, recommendation;
+            let profile, description, recommendation, miniProfile;
             if (scores.metabolismo === maxScore) {
                 profile = 'Metabolismo Desacelerado';
+                miniProfile = 'Você tem perfil Metabolismo Desacelerado';
                 description = 'Entendemos como é frustrante se sentir cansada o tempo todo, mesmo tentando de tudo para perder peso. Seu metabolismo pode estar mais lento agora, mas isso não precisa ser permanente. Você merece se sentir vibrante e cheia de energia novamente!';
                 recommendation = 'Para o seu perfil de Metabolismo Desacelerado, recomendamos receitas naturais que impulsionam o metabolismo de forma gentil, ajudando você a recuperar a vitalidade e o equilíbrio que tanto busca. Descubra como essas receitas podem transformar sua rotina.';
             } else if (scores.hormonal === maxScore) {
                 profile = 'Sensibilidade Hormonal';
+                miniProfile = 'Você tem perfil Sensibilidade Hormonal';
                 description = 'Sabemos como as oscilações hormonais podem deixar você se sentindo inchada e instável emocionalmente. É comum nessa fase da vida, mas você não está sozinha nisso. Imagine equilibrar tudo isso e se sentir confiante no seu corpo mais uma vez.';
                 recommendation = 'Para o seu perfil de Sensibilidade Hormonal, recomendamos receitas naturais que harmonizam os hormônios, reduzindo inchaços e estabilizando sua energia. Veja como essas receitas podem trazer paz e bem-estar para o seu dia a dia.';
             } else {
                 profile = 'Ansiedade Alimentar';
+                miniProfile = 'Você tem perfil Ansiedade Alimentar';
                 description = 'Compreendemos o quanto o estresse e as emoções podem tornar a alimentação um desafio, levando a momentos de compulsão que depois trazem culpa. Você merece uma relação saudável com a comida, cheia de prazer e sem julgamentos.';
                 recommendation = 'Para o seu perfil de Ansiedade Alimentar, recomendamos receitas naturais que acalmam a mente e controlam impulsos emocionais, ajudando você a ganhar confiança e controle. Explore como essas receitas podem ser o apoio que você precisa.';
             }
 
+            document.getElementById('mini-profile').innerHTML = miniProfile;
             document.getElementById('profile').innerHTML = `<strong>Perfil: ${profile}</strong><br>${description}`;
             document.getElementById('recommendation').innerHTML = recommendation;
             questions.forEach(q => document.getElementById(q).style.display = 'none');
