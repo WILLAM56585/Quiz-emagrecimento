@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz: Emagreça com Saúde Após os 50</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Meta Pixel Code -->
     <script>
@@ -25,7 +25,7 @@
     <!-- End Meta Pixel Code -->
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Open Sans', sans-serif;
             background-color: #f0f4f8;
             color: #333;
             margin: 0;
@@ -37,9 +37,22 @@
             text-align: center;
             margin-bottom: 20px;
         }
-        .header h1 {
-            color: #4a90e2;
+        .header .logo {
+            font-family: 'Poppins', sans-serif;
             font-size: 2em;
+            color: #4CAF50; /* Verde claro */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .header .logo i {
+            color: #C8A2C8; /* Lilás */
+        }
+        .header .slogan {
+            font-size: 1.2em;
+            color: #ADD8E6; /* Azul claro */
+            margin-top: 5px;
         }
         .container {
             max-width: 800px;
@@ -58,6 +71,7 @@
             text-align: center;
             color: #4a90e2;
             margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
         }
         .introduction, .question, .result, .offer {
             margin-bottom: 30px;
@@ -89,7 +103,7 @@
             transform: scale(1.2);
         }
         button {
-            background: linear-gradient(135deg, #4a90e2, #357abd);
+            background: linear-gradient(135deg, #4CAF50, #C8A2C8); /* Verde claro para lilás */
             color: white;
             padding: 15px 30px;
             border: none;
@@ -105,7 +119,7 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         button:hover {
-            background: linear-gradient(135deg, #357abd, #4a90e2);
+            background: linear-gradient(135deg, #C8A2C8, #4CAF50);
             transform: scale(1.05) translateY(-2px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
@@ -227,7 +241,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Bem-vinda ao Quiz: Emagreça com Saúde Após os 50</h1>
+            <div class="logo"><i class="fas fa-leaf"></i> Receita para Secar</div>
+            <div class="slogan">Receitas naturais para mulheres 50+</div>
         </div>
         
         <div class="introduction active" id="intro">
@@ -356,7 +371,7 @@
         </div>
 
         <div class="footer">
-            <p>© 2025 Receita para secar. Todos os direitos reservados. Política de Privacidade | Termos de Uso</p>
+            <p>© 2025 Seu Site. Todos os direitos reservados. Política de Privacidade | Termos de Uso</p>
         </div>
     </div>
 
