@@ -3,576 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Quiz personalizado para mulheres acima de 50 anos que desejam emagrecer com saúde. Descubra seu perfil e receba receitas naturais.">
-    <meta name="keywords" content="emagrecimento saudável, receitas naturais, mulheres 50+, metabolismo, hormônios, ansiedade alimentar">
-    <title>Quiz: Emagreça com Saúde Após os 50</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1905467250179985');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1905467250179985&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
+    <title>Emagreça com Saúde Após os 50</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: #f0f4f8;
-            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 20px;
-            line-height: 1.6;
-            transition: background-color 0.3s ease;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .header .logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2em;
-            color: #4CAF50; /* Verde claro */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        .header .logo i {
-            color: #C8A2C8; /* Lilás */
-        }
-        .header .slogan {
-            font-size: 1.2em;
-            color: #ADD8E6; /* Azul claro */
-            margin-top: 5px;
+            color: #333;
+            background: linear-gradient(to bottom, #fff0f5, #f9f9f9);
+            min-height: 100vh;
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-        }
-        h2 {
-            text-align: center;
-            color: #4a90e2;
-            margin-bottom: 20px;
-            font-family: 'Poppins', sans-serif;
-        }
-        .introduction, .question, .result, .offer {
-            margin-bottom: 30px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        .active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        label {
-            display: block;
-            margin: 15px 0;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            font-size: 1.1em;
-        }
-        label:hover {
-            background-color: #e6f7ff;
-            box-shadow: 0 2px 10px rgba(74, 144, 226, 0.2);
-        }
-        input[type="radio"] {
-            margin-right: 10px;
-            accent-color: #4a90e2;
-            transform: scale(1.2);
-        }
-        button {
-            background: linear-gradient(135deg, #4CAF50, #C8A2C8); /* Verde claro para lilás */
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px auto;
-            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        button:hover {
-            background: linear-gradient(135deg, #C8A2C8, #4CAF50);
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        button:disabled {
-            background: linear-gradient(135deg, #cccccc, #b3b3b3);
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-        button i {
-            margin-left: 8px;
-        }
-        #cta-btn {
-            background: linear-gradient(135deg, #FF4500, #FF8C00); /* Laranja contrastante para destaque */
-            font-size: 20px;
-            padding: 20px 40px;
-        }
-        #cta-btn:hover {
-            background: linear-gradient(135deg, #FF8C00, #FF4500);
-        }
-        .progress-bar {
-            background-color: #e0e0e0;
-            border-radius: 8px;
-            height: 10px;
-            margin-bottom: 20px;
+            padding: 0 15px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
             overflow: hidden;
         }
-        .progress {
-            background-color: #4a90e2;
-            height: 100%;
-            width: 0;
-            transition: width 0.5s ease;
-        }
-        .progress-text {
+        h1 {
+            color: #ff69b4;
             text-align: center;
-            margin-bottom: 10px;
-            color: #4a90e2;
+            font-size: clamp(2em, 6vw, 3.5em);
+            margin: 40px 0 20px;
             font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
-        .testimonials {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #f0f4f8;
-            border-radius: 12px;
-        }
-        .testimonial {
-            border-left: 4px solid #4a90e2;
-            padding-left: 15px;
-            margin-bottom: 15px;
-            font-style: italic;
-            color: #555;
-        }
-        #start-btn {
-            display: block;
-            margin: 30px auto;
-        }
-        .fade-in {
-            animation: fadeIn 1s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .urgency {
+        .description {
             text-align: center;
-            color: #ff0000;
-            font-weight: bold;
-            margin-bottom: 10px;
+            margin: 30px 0;
+            font-size: clamp(16px, 4vw, 20px);
+            line-height: 1.6;
+            padding: 0 20px;
         }
-        .price-info {
+        .description p {
+            margin: 15px 0;
+        }
+        .profile {
+            background: #fff0f5;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.1);
+        }
+        .profile h2 {
+            color: #ff69b4;
             text-align: center;
+            font-size: clamp(1.5em, 5vw, 2em);
+            margin-bottom: 20px;
+        }
+        .profile ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .profile li {
+            margin: 15px 0;
+            font-size: clamp(16px, 4vw, 18px);
+            text-align: center;
+        }
+        .profile li::before {
+            content: "🌟 ";
             font-size: 1.2em;
-            margin-bottom: 10px;
-            color: #4a90e2;
-            font-weight: bold;
         }
-        .guarantee {
-            text-align: center;
-            font-size: 1.1em;
-            margin-bottom: 20px;
-            color: #333;
+        .benefits {
+            list-style-type: none;
+            padding: 0 20px;
+            margin: 40px 0;
         }
-        .badges {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        .badge {
-            width: 60px;
-            height: 60px;
-            background-color: #f0f4f8;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8em;
-            color: #4a90e2;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        .benefits li {
+            margin: 20px 0;
+            font-size: clamp(16px, 4vw, 20px);
+            padding: 15px;
+            background: #f8f8f8;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
             transition: transform 0.3s ease;
         }
-        .badge:hover {
-            transform: scale(1.1);
+        .benefits li:hover {
+            transform: translateY(-5px);
         }
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 0.9em;
-            color: #666;
-        }
-        .footer a {
-            color: #4a90e2;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-        .question-icon {
-            text-align: center;
-            font-size: 2em;
-            color: #C8A2C8; /* Lilás */
-            margin-bottom: 10px;
-        }
-        .mini-result {
-            text-align: center;
+        .benefits li::before {
+            content: "✅ ";
             font-size: 1.5em;
-            color: #4CAF50; /* Verde claro */
+        }
+        .video-section {
+            margin: 40px 0;
+            text-align: center;
+        }
+        .video-section h2 {
+            color: #ff69b4;
+            font-size: clamp(1.5em, 5vw, 2em);
             margin-bottom: 20px;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            margin: 0 auto;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .buy-button {
+            text-align: center;
+            margin: 50px 0;
+        }
+        .buy-button a {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            padding: 20px 50px;
+            text-decoration: none;
+            font-size: clamp(18px, 5vw, 24px);
             font-weight: bold;
+            border-radius: 50px;
+            display: inline-block;
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+            min-width: 300px;
         }
-        .score {
-            text-align: center;
-            font-size: 1.2em;
-            color: #ADD8E6; /* Azul claro */
-            margin-bottom: 20px;
+        .buy-button a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 105, 180, 0.5);
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
         }
-        .creator-info {
+        .buy-button-below-video {
             text-align: center;
-            margin-bottom: 20px;
-            font-style: italic;
+            margin: 30px 0 50px 0;
+        }
+        .buy-button-below-video a {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            font-size: clamp(18px, 5vw, 22px);
+            font-weight: bold;
+            border-radius: 50px;
+            display: inline-block;
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+            transition: all 0.3s ease;
+            min-width: 280px;
+        }
+        .buy-button-below-video a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255, 105, 180, 0.4);
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+        }
+        .security {
+            text-align: center;
+            font-size: clamp(14px, 3.5vw, 16px);
             color: #555;
+            margin: 40px 0;
+            padding: 30px;
+            background: #fff0f5;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        .testimonial img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 10px;
-            vertical-align: middle;
+        .security::before {
+            content: "🔒 ";
+            font-size: 2em;
+            display: block;
+            margin-bottom: 15px;
         }
-        @media (max-width: 600px) {
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ffb6c1, transparent);
+            margin: 40px auto;
+            max-width: 500px;
+        }
+        @media (max-width: 480px) {
+            body {
+                padding: 15px 10px;
+            }
             .container {
-                padding: 20px;
+                padding: 0 10px;
+                border-radius: 15px;
             }
-            button {
-                width: 100%;
-                font-size: 18px;
-                padding: 15px;
+            .buy-button a, .buy-button-below-video a {
+                width: 90%;
+                padding: 20px 30px;
             }
-            label {
-                font-size: 16px;
+            .video-container {
+                padding-bottom: 75%; /* Adjust for mobile if needed */
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <div class="logo"><i class="fas fa-leaf"></i> Receita para Secar</div>
-            <div class="slogan">Receitas naturais para mulheres 50+</div>
-        </div>
-        
-        <div class="introduction active" id="intro">
-            <p>Vamos entender como seu corpo reage ao emagrecimento para encontrar a melhor solução para você. Este quiz é rápido e confidencial, feito especialmente para mulheres como você, que buscam equilíbrio e bem-estar. Responda com sinceridade para um resultado personalizado.</p>
-            <button id="start-btn">Vamos começar? <i class="fas fa-arrow-right"></i></button>
-        </div>
+        <h1>🌸 Emagreça com saúde após os 50 — sem dietas malucas, sem academia</h1>
 
-        <div class="progress-bar" id="progress-bar">
-            <div class="progress" id="progress"></div>
+        <hr>
+
+        <div class="video-section">
+            <h2>Assista ao Vídeo e Veja Como Pode Transformar Sua Vida</h2>
+            <div class="video-container">
+                <iframe src="https://scripts.converteai.net/450e08d4-eaa1-4c84-ab4c-34d77b117dc8/players/682b77713a21af615f615cf3/v4/embed.html" frameborder="0" allowfullscreen></iframe>
+            </div>
         </div>
 
-        <form id="quiz-form">
-            <div class="question" id="q1">
-                <div class="progress-text">Pergunta 1 de 8</div>
-                <div class="question-icon"><i class="fas fa-bolt"></i></div>
-                <h2>Pergunta 1: Como você descreveria sua energia ao longo do dia?</h2>
-                <label><input type="radio" name="q1" value="metabolismo"> Sempre me sinto cansada, mesmo após uma boa noite de sono.</label>
-                <label><input type="radio" name="q1" value="hormonal"> Tenho picos e quedas, especialmente após as refeições.</label>
-                <label><input type="radio" name="q1" value="ansiedade"> Fico agitada ou ansiosa, o que me faz comer mais.</label>
-                <label><input type="radio" name="q1" value="none"> Geralmente boa, mas poderia melhorar.</label>
-                <button type="button" class="next-btn" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
-            </div>
-
-            <div class="question" id="q2">
-                <div class="progress-text">Pergunta 2 de 8</div>
-                <div class="question-icon"><i class="fas fa-tint"></i></div>
-                <h2>Pergunta 2: Você nota retenção de líquidos ou inchaço com frequência?</h2>
-                <label><input type="radio" name="q2" value="hormonal"> Sim, especialmente nas pernas ou abdômen.</label>
-                <label><input type="radio" name="q2" value="metabolismo"> Não muito, mas meu peso varia pouco mesmo com dieta.</label>
-                <label><input type="radio" name="q2" value="ansiedade"> Só quando estou estressada.</label>
-                <label><input type="radio" name="q2" value="none"> Raramente.</label>
-                <button type="button" class="next-btn" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
-            </div>
-
-            <div class="question" id="q3">
-                <div class="progress-text">Pergunta 3 de 8</div>
-                <div class="question-icon"><i class="fas fa-bed"></i></div>
-                <h2>Pergunta 3: Como é sua rotina de sono?</h2>
-                <label><input type="radio" name="q3" value="ansiedade"> Durmo mal, acordo várias vezes ou sinto insônia.</label>
-                <label><input type="radio" name="q3" value="metabolismo"> Durmo o suficiente, mas acordo cansada.</label>
-                <label><input type="radio" name="q3" value="hormonal"> Varia com ciclos hormonais ou menopausa.</label>
-                <label><input type="radio" name="q3" value="none"> Boa e reparadora.</label>
-                <button type="button" class="next-btn" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
-            </div>
-
-            <div class="question" id="q4">
-                <div class="progress-text">Pergunta 4 de 8</div>
-                <div class="question-icon"><i class="fas fa-utensils"></i></div>
-                <h2>Pergunta 4: Você tem episódios de compulsão alimentar, como comer por emoção?</h2>
-                <label><input type="radio" name="q4" value="ansiedade"> Sim, especialmente em momentos de estresse.</label>
-                <label><input type="radio" name="q4" value="metabolismo"> Não, mas sinto fome constante mesmo comendo bem.</label>
-                <label><input type="radio" name="q4" value="hormonal"> Às vezes, ligado a oscilações de humor.</label>
-                <label><input type="radio" name="q4" value="none"> Não acontece.</label>
-                <button type="button" class="next-btn" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
-            </div>
-
-            <div class="question" id="q5">
-                <div class="progress-text">Pergunta 5 de 8</div>
-                <div class="question-icon"><i class="fas fa-brain"></i></div>
-                <h2>Pergunta 5: Como você lida com o estresse no dia a dia?</h2>
-                <label><input type="radio" name="q5" value="ansiedade"> Fico ansiosa e recorro a lanches para acalmar.</label>
-                <label><input type="radio" name="q5" value="metabolismo"> O estresse me deixa exausta, sem energia para exercícios.</label>
-                <label><input type="radio" name="q5" value="hormonal"> Afeta meu ciclo hormonal, como TPM ou menopausa.</label>
-                <label><input type="radio" name="q5" value="none"> Gerencio bem, sem impactos grandes.</label>
-                <button type="button" class="next-btn" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
-            </div>
-
-            <div class="question" id="q6">
-                <div class="progress-text">Pergunta 6 de 8</div>
-                <div class="question-icon"><i class="fas fa-history"></i></div>
-                <h2>Pergunta 6: Qual é seu histórico com dietas anteriores?</h2>
-                <label><input type="radio" name="q6" value="metabolismo"> Tentei várias, mas o peso volta rápido.</label>
-                <label><input type="radio" name="q6" value="hormonal"> Funcionam no início, mas hormônios atrapalham.</label>
-                <label><input type="radio" name="q6" value="ansiedade"> Quebro as dietas por ansiedade ou compulsão.</label>
-                <label><input type="radio" name="q6" value="none"> Nunca precisei ou foram bem-sucedidas.</label>
-                <button type="button" class="next-btn" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
-            </div>
-
-            <div class="question" id="q7">
-                <div class="progress-text">Pergunta 7 de 8</div>
-                <div class="question-icon"><i class="fas fa-running"></i></div>
-                <h2>Pergunta 7: Você pratica exercícios regularmente?</h2>
-                <label><input type="radio" name="q7" value="metabolismo"> Tento, mas o cansaço me impede.</label>
-                <label><input type="radio" name="q7" value="hormonal"> Sim, mas noto inchaço ou fadiga após.</label>
-                <label><input type="radio" name="q7" value="ansiedade"> Evito porque o estresse aumenta.</label>
-                <label><input type="radio" name="q7" value="none"> Sim, e me sinto bem.</label>
-                <button type="button" class="next-btn" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
-            </div>
-
-            <div class="question" id="q8">
-                <div class="progress-text">Pergunta 8 de 8</div>
-                <div class="question-icon"><i class="fas fa-apple-alt"></i></div>
-                <h2>Pergunta 8: Como são seus hábitos alimentares diários?</h2>
-                <label><input type="radio" name="q8" value="metabolismo"> Como alimentos saudáveis, mas não vejo resultados.</label>
-                <label><input type="radio" name="q8" value="hormonal"> Evito certos alimentos por medo de inchaço hormonal.</label>
-                <label><input type="radio" name="q8" value="ansiedade"> Como mais quando estou emocional.</label>
-                <label><input type="radio" name="q8" value="none"> Equilibrados e sem problemas.</label>
-                <button type="submit" id="submit-btn" disabled>Ver meu resultado <i class="fas fa-check"></i></button>
-            </div>
-        </form>
-
-        <div class="result" id="result-section" style="display: none;">
-            <h2>Seu Resultado Personalizado</h2>
-            <div class="score" id="score"></div>
-            <div class="mini-result" id="mini-profile"></div>
-            <p id="profile"></p>
-            <p id="recommendation"></p>
+        <div class="buy-button-below-video">
+            🛒 <a href="https://pay.kiwify.com.br/IhX5Pmh?afid=sD8LdYUX">Quero meu guia por R$ 27,90 agora</a>
         </div>
 
-        <div class="offer" id="offer-section" style="display: none;">
-            <h2>Descubra o Guia de Receitas Naturais para Emagrecimento Saudável</h2>
-            <p>Imagine acordar com mais energia, menos inchaço e um sono reparador — tudo sem dietas radicais. Nosso <strong>Guia Digital de Receitas Naturais</strong> é criado para mulheres acima de 50 anos, com ingredientes simples e acessíveis que combatem obstáculos como os seus.</p>
-            
-            <h3>Benefícios reais que você vai notar:</h3>
+        <hr>
+
+        <div class="description">
+            <p>✨ Você não precisa passar fome nem viver na academia para emagrecer.</p>
+            <p>Este guia foi criado especialmente para mulheres acima de 50 anos que enfrentam os desafios da menopausa, retenção de líquidos e falta de energia.</p>
+            <p>Com receitas simples, alimentos acessíveis e estratégias naturais, você vai recuperar sua autoestima e bem-estar em poucos dias.</p>
+        </div>
+
+        <hr>
+
+        <div class="profile">
+            <h2>Perfil que se Encaixa</h2>
             <ul>
-                <li>Mais energia para o dia a dia.</li>
-                <li>Redução de inchaço e retenção de líquidos.</li>
-                <li>Melhora no sono e no humor.</li>
-                <li>Autoestima elevada, com mudanças graduais e seguras.</li>
+                <li>Mulheres acima de 50 anos</li>
+                <li>Que estão passando pela menopausa</li>
+                <li>Com problemas de retenção de líquidos</li>
+                <li>Sentindo falta de energia no dia a dia</li>
+                <li>Que desejam emagrecer de forma saudável e sustentável</li>
+                <li>Sem tempo para dietas radicais ou exercícios intensos</li>
             </ul>
-
-            <div class="testimonials">
-                <h3>Mais de 10 mil mulheres já transformaram suas rotinas com essas receitas — veja o que elas dizem:</h3>
-                <div class="testimonial">"Aos 55 anos, finalmente me sinto leve e energizada. Sem milagres, só equilíbrio!" — Maria S., 57 anos.</div>
-                <div class="testimonial">"Meu inchaço sumiu em semanas. Recomendo para quem cansou de dietas frustrantes." — Ana P., 52 anos.</div>
-                <div class="testimonial">"Controlou minha ansiedade alimentar. Agora como com prazer e sem culpa." — Lucia M., 60 anos.</div>
-            </div>
-
-            <div class="urgency">
-                <p>Oferta especial: Só 20 guias disponíveis hoje. Tempo restante: <span id="countdown"></span></p>
-            </div>
-            <div class="price-info">
-                <p>Por apenas R$ 27,90</p>
-            </div>
-            <div class="guarantee">
-                <p>Com garantia de 30 dias — se não gostar, devolvemos seu investimento sem perguntas.</p>
-            </div>
-            <div class="badges">
-                <div class="badge" title="Compra Segura"><i class="fas fa-lock"></i></div>
-                <div class="badge" title="Satisfação Garantida"><i class="fas fa-shield-alt"></i></div>
-                <div class="badge" title="Compra Verificada"><i class="fas fa-check-circle"></i></div>
-            </div>
-            <button id="cta-btn" onclick="window.location.href='https://pay.kiwify.com.br/IhX5Pmh?afid=sD8LdYUX';">Quero meu guia por R$27,90 com garantia <i class="fas fa-shopping-cart"></i></button>
         </div>
 
-        <div class="footer">
-            <p>© 2025 Receita para secar. Todos os direitos reservados. <a href="https://example.com/politica-privacidade">Política de Privacidade</a> | <a href="https://example.com/termos-uso">Termos de Uso</a></p>
+        <hr>
+
+        <ul class="benefits">
+            <li>Plano alimentar adaptado à sua idade e rotina</li>
+            <li>Receitas práticas com ingredientes do dia a dia</li>
+            <li>Dicas para reduzir inchaço e acelerar o metabolismo</li>
+            <li>Garantia de 7 dias: se não gostar, seu dinheiro de volta</li>
+        </ul>
+
+        <hr>
+
+        <div class="buy-button">
+            🛒 <a href="https://pay.kiwify.com.br/IhX5Pmh?afid=sD8LdYUX">Quero meu guia por R$ 27,90 agora</a>
+        </div>
+
+        <hr>
+
+        <div class="security">
+            Segurança e confiança<br>
+            Pagamento 100% seguro via MercadoPago<br>
+            Mais de 10.000 mulheres já começaram sua transformação
         </div>
     </div>
-
-    <script>
-        const questions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'];
-        let currentQuestion = 0;
-        const progress = document.getElementById('progress');
-        const progressBar = document.getElementById('progress-bar');
-
-        document.getElementById('start-btn').addEventListener('click', () => {
-            document.getElementById('intro').classList.remove('active');
-            setTimeout(() => {
-                document.getElementById('intro').style.display = 'none';
-                progressBar.style.display = 'block';
-                showQuestion(currentQuestion);
-            }, 500);
-        });
-
-        function showQuestion(index) {
-            questions.forEach((q, i) => {
-                const el = document.getElementById(q);
-                el.style.display = i === index ? 'block' : 'none';
-                if (i === index) {
-                    setTimeout(() => el.classList.add('active'), 10);
-                } else {
-                    el.classList.remove('active');
-                }
-            });
-            updateProgress();
-        }
-
-        function updateProgress() {
-            const percentage = ((currentQuestion + 1) / questions.length) * 100;
-            progress.style.width = `${percentage}%`;
-        }
-
-        document.querySelectorAll('.question input[type="radio"]').forEach(radio => {
-            radio.addEventListener('change', (e) => {
-                const questionDiv = e.target.closest('.question');
-                const nextBtn = questionDiv.querySelector('.next-btn, #submit-btn');
-                if (nextBtn) nextBtn.disabled = false;
-            });
-        });
-
-        document.querySelectorAll('.next-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (currentQuestion < questions.length - 1) {
-                    currentQuestion++;
-                    showQuestion(currentQuestion);
-                }
-            });
-        });
-
-        document.getElementById('quiz-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            let scores = { metabolismo: 0, hormonal: 0, ansiedade: 0 };
-
-            for (let i = 1; i <= 8; i++) {
-                const answer = formData.get(`q${i}`);
-                if (answer && answer !== 'none') {
-                    scores[answer] += 2;
-                }
-            }
-
-            let totalScore = scores.metabolismo + scores.hormonal + scores.ansiedade;
-            document.getElementById('score').innerHTML = `Sua pontuação: ${totalScore} pontos`;
-
-            let maxScore = Math.max(scores.metabolismo, scores.hormonal, scores.ansiedade);
-            let profile, description, recommendation, miniProfile;
-            if (scores.metabolismo === maxScore) {
-                profile = 'Metabolismo Desacelerado';
-                miniProfile = 'Você tem perfil Metabolismo Desacelerado, precisa de receitas que acelerem o metabolismo';
-                description = 'Entendemos como é frustrante se sentir cansada o tempo todo, mesmo tentando de tudo para perder peso. Seu metabolismo pode estar mais lento agora, mas isso não precisa ser permanente. Você merece se sentir vibrante e cheia de energia novamente!';
-                recommendation = 'Para o seu perfil de Metabolismo Desacelerado, recomendamos receitas naturais que impulsionam o metabolismo de forma gentil, ajudando você a recuperar a vitalidade e o equilíbrio que tanto busca. Descubra como essas receitas podem transformar sua rotina.';
-            } else if (scores.hormonal === maxScore) {
-                profile = 'Sensibilidade Hormonal';
-                miniProfile = 'Você tem perfil Sensibilidade Hormonal, precisa de receitas que equilibrem hormônios';
-                description = 'Sabemos como as oscilações hormonais podem deixar você se sentindo inchada e instável emocionalmente. É comum nessa fase da vida, mas você não está sozinha nisso. Imagine equilibrar tudo isso e se sentir confiante no seu corpo mais uma vez.';
-                recommendation = 'Para o seu perfil de Sensibilidade Hormonal, recomendamos receitas naturais que harmonizam os hormônios, reduzindo inchaços e estabilizando sua energia. Veja como essas receitas podem trazer paz e bem-estar para o seu dia a dia.';
-            } else {
-                profile = 'Ansiedade Alimentar';
-                miniProfile = 'Você tem perfil Ansiedade Alimentar, precisa de receitas que controlem impulsos';
-                description = 'Compreendemos o quanto o estresse e as emoções podem tornar a alimentação um desafio, levando a momentos de compulsão que depois trazem culpa. Você merece uma relação saudável com a comida, cheia de prazer e sem julgamentos.';
-                recommendation = 'Para o seu perfil de Ansiedade Alimentar, recomendamos receitas naturais que acalmam a mente e controlam impulsos emocionais, ajudando você a ganhar confiança e controle. Explore como essas receitas podem ser o apoio que você precisa.';
-            }
-
-            document.getElementById('mini-profile').innerHTML = miniProfile;
-            document.getElementById('profile').innerHTML = `<strong>Perfil: ${profile}</strong><br>${description}`;
-            document.getElementById('recommendation').innerHTML = recommendation;
-            questions.forEach(q => document.getElementById(q).style.display = 'none');
-            progressBar.style.display = 'none';
-            const resultSection = document.getElementById('result-section');
-            const offerSection = document.getElementById('offer-section');
-            resultSection.style.display = 'block';
-            offerSection.style.display = 'block';
-            setTimeout(() => {
-                resultSection.classList.add('active', 'fade-in');
-                offerSection.classList.add('active', 'fade-in');
-            }, 10);
-
-            // Iniciar contador regressivo
-            startCountdown();
-
-            // Rastrear evento ViewContent no Facebook Pixel
-            fbq('track', 'ViewContent', {
-                content_name: 'Quiz Result',
-                content_category: profile
-            });
-
-            // Para remarketing: Eventos customizados por perfil
-            fbq('trackCustom', 'QuizResultViewed', { profile: profile });
-
-            // Para o clique no botão
-            document.getElementById('cta-btn').addEventListener('click', () => {
-                fbq('trackCustom', 'QuizCTAClicked', { profile: profile });
-            });
-        });
-
-        function startCountdown() {
-            const now = new Date();
-            const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
-            const timer = setInterval(() => {
-                const timeLeft = endOfDay - new Date();
-                if (timeLeft <= 0) {
-                    clearInterval(timer);
-                    document.getElementById('countdown').innerHTML = 'Oferta expirada!';
-                } else {
-                    const hours = Math.floor(timeLeft / (1000 * 60 * 60));
-                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                    document.getElementById('countdown').innerHTML = `${hours}h ${minutes}m ${seconds}s`;
-                }
-            }, 1000);
-        }
-    </script>
 </body>
 </html>
