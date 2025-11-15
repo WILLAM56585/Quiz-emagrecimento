@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Rápido: Emagreça com Saúde Após os 50</title>
+    <meta name="description" content="Quiz personalizado para mulheres acima de 50 anos que desejam emagrecer com saúde. Descubra seu perfil e receba receitas naturais.">
+    <meta name="keywords" content="emagrecimento saudável, receitas naturais, mulheres 50+, metabolismo, hormônios, ansiedade alimentar">
+    <title>Quiz: Emagreça com Saúde Após os 50</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1905467250179985');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1905467250179985&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
@@ -114,6 +133,14 @@
         }
         button i {
             margin-left: 8px;
+        }
+        #cta-btn {
+            background: linear-gradient(135deg, #FF4500, #FF8C00); /* Laranja contrastante para destaque */
+            font-size: 20px;
+            padding: 20px 40px;
+        }
+        #cta-btn:hover {
+            background: linear-gradient(135deg, #FF8C00, #FF4500);
         }
         .progress-bar {
             background-color: #e0e0e0;
@@ -231,6 +258,19 @@
             color: #ADD8E6; /* Azul claro */
             margin-bottom: 20px;
         }
+        .creator-info {
+            text-align: center;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #555;
+        }
+        .testimonial img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
         @media (max-width: 600px) {
             .container {
                 padding: 20px;
@@ -264,7 +304,7 @@
 
         <form id="quiz-form">
             <div class="question" id="q1">
-                <div class="progress-text">Pergunta 1 de 3</div>
+                <div class="progress-text">Pergunta 1 de 8</div>
                 <div class="question-icon"><i class="fas fa-bolt"></i></div>
                 <h2>Pergunta 1: Como você descreveria sua energia ao longo do dia?</h2>
                 <label><input type="radio" name="q1" value="metabolismo"> Sempre me sinto cansada, mesmo após uma boa noite de sono.</label>
@@ -275,7 +315,7 @@
             </div>
 
             <div class="question" id="q2">
-                <div class="progress-text">Pergunta 2 de 3</div>
+                <div class="progress-text">Pergunta 2 de 8</div>
                 <div class="question-icon"><i class="fas fa-tint"></i></div>
                 <h2>Pergunta 2: Você nota retenção de líquidos ou inchaço com frequência?</h2>
                 <label><input type="radio" name="q2" value="hormonal"> Sim, especialmente nas pernas ou abdômen.</label>
@@ -286,13 +326,68 @@
             </div>
 
             <div class="question" id="q3">
-                <div class="progress-text">Pergunta 3 de 3</div>
+                <div class="progress-text">Pergunta 3 de 8</div>
                 <div class="question-icon"><i class="fas fa-bed"></i></div>
                 <h2>Pergunta 3: Como é sua rotina de sono?</h2>
                 <label><input type="radio" name="q3" value="ansiedade"> Durmo mal, acordo várias vezes ou sinto insônia.</label>
                 <label><input type="radio" name="q3" value="metabolismo"> Durmo o suficiente, mas acordo cansada.</label>
                 <label><input type="radio" name="q3" value="hormonal"> Varia com ciclos hormonais ou menopausa.</label>
                 <label><input type="radio" name="q3" value="none"> Boa e reparadora.</label>
+                <button type="button" class="next-btn" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <div class="question" id="q4">
+                <div class="progress-text">Pergunta 4 de 8</div>
+                <div class="question-icon"><i class="fas fa-utensils"></i></div>
+                <h2>Pergunta 4: Você tem episódios de compulsão alimentar, como comer por emoção?</h2>
+                <label><input type="radio" name="q4" value="ansiedade"> Sim, especialmente em momentos de estresse.</label>
+                <label><input type="radio" name="q4" value="metabolismo"> Não, mas sinto fome constante mesmo comendo bem.</label>
+                <label><input type="radio" name="q4" value="hormonal"> Às vezes, ligado a oscilações de humor.</label>
+                <label><input type="radio" name="q4" value="none"> Não acontece.</label>
+                <button type="button" class="next-btn" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <div class="question" id="q5">
+                <div class="progress-text">Pergunta 5 de 8</div>
+                <div class="question-icon"><i class="fas fa-brain"></i></div>
+                <h2>Pergunta 5: Como você lida com o estresse no dia a dia?</h2>
+                <label><input type="radio" name="q5" value="ansiedade"> Fico ansiosa e recorro a lanches para acalmar.</label>
+                <label><input type="radio" name="q5" value="metabolismo"> O estresse me deixa exausta, sem energia para exercícios.</label>
+                <label><input type="radio" name="q5" value="hormonal"> Afeta meu ciclo hormonal, como TPM ou menopausa.</label>
+                <label><input type="radio" name="q5" value="none"> Gerencio bem, sem impactos grandes.</label>
+                <button type="button" class="next-btn" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <div class="question" id="q6">
+                <div class="progress-text">Pergunta 6 de 8</div>
+                <div class="question-icon"><i class="fas fa-history"></i></div>
+                <h2>Pergunta 6: Qual é seu histórico com dietas anteriores?</h2>
+                <label><input type="radio" name="q6" value="metabolismo"> Tentei várias, mas o peso volta rápido.</label>
+                <label><input type="radio" name="q6" value="hormonal"> Funcionam no início, mas hormônios atrapalham.</label>
+                <label><input type="radio" name="q6" value="ansiedade"> Quebro as dietas por ansiedade ou compulsão.</label>
+                <label><input type="radio" name="q6" value="none"> Nunca precisei ou foram bem-sucedidas.</label>
+                <button type="button" class="next-btn" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <div class="question" id="q7">
+                <div class="progress-text">Pergunta 7 de 8</div>
+                <div class="question-icon"><i class="fas fa-running"></i></div>
+                <h2>Pergunta 7: Você pratica exercícios regularmente?</h2>
+                <label><input type="radio" name="q7" value="metabolismo"> Tento, mas o cansaço me impede.</label>
+                <label><input type="radio" name="q7" value="hormonal"> Sim, mas noto inchaço ou fadiga após.</label>
+                <label><input type="radio" name="q7" value="ansiedade"> Evito porque o estresse aumenta.</label>
+                <label><input type="radio" name="q7" value="none"> Sim, e me sinto bem.</label>
+                <button type="button" class="next-btn" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <div class="question" id="q8">
+                <div class="progress-text">Pergunta 8 de 8</div>
+                <div class="question-icon"><i class="fas fa-apple-alt"></i></div>
+                <h2>Pergunta 8: Como são seus hábitos alimentares diários?</h2>
+                <label><input type="radio" name="q8" value="metabolismo"> Como alimentos saudáveis, mas não vejo resultados.</label>
+                <label><input type="radio" name="q8" value="hormonal"> Evito certos alimentos por medo de inchaço hormonal.</label>
+                <label><input type="radio" name="q8" value="ansiedade"> Como mais quando estou emocional.</label>
+                <label><input type="radio" name="q8" value="none"> Equilibrados e sem problemas.</label>
                 <button type="submit" id="submit-btn" disabled>Ver meu resultado <i class="fas fa-check"></i></button>
             </div>
         </form>
@@ -347,7 +442,7 @@
     </div>
 
     <script>
-        const questions = ['q1', 'q2', 'q3'];
+        const questions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'];
         let currentQuestion = 0;
         const progress = document.getElementById('progress');
         const progressBar = document.getElementById('progress-bar');
@@ -401,7 +496,7 @@
             const formData = new FormData(e.target);
             let scores = { metabolismo: 0, hormonal: 0, ansiedade: 0 };
 
-            for (let i = 1; i <= 3; i++) {
+            for (let i = 1; i <= 8; i++) {
                 const answer = formData.get(`q${i}`);
                 if (answer && answer !== 'none') {
                     scores[answer] += 2;
